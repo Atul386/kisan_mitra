@@ -32,7 +32,15 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
+
+  /// Delete Account (§41): removes every row this device holds. The local
+  /// database only ever contains this farmer's own data.
+  Future<void> wipeAllData() => transaction(() async {
+        for (final table in allTables) {
+          await delete(table).go();
+        }
+      });
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -40,6 +48,11 @@ class AppDatabase extends _$AppDatabase {
         onUpgrade: (m, from, to) async {
           if (from < 2) {
             await m.addColumn(farms, farms.country);
+          }
+          if (from < 3) {
+            await m.addColumn(localUsers, localUsers.village);
+            await m.addColumn(seasons, seasons.areaUnit);
+            await m.addColumn(seasons, seasons.seasonName);
           }
         },
       );

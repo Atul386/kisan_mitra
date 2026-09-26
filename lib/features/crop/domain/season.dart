@@ -7,6 +7,8 @@ class Season {
     required this.sowingDate,
     this.variety,
     this.area,
+    this.areaUnit,
+    this.seasonName,
     this.status = 'active',
   });
 
@@ -17,6 +19,10 @@ class Season {
   final DateTime sowingDate;
   final String? variety;
   final double? area;
+  /// [AreaUnit] name (acre, hectare, …); null for crops added before v3.
+  final String? areaUnit;
+  /// kharif, rabi or zaid.
+  final String? seasonName;
   final String status;
 
   int get dayNumber => DateTime.now().difference(sowingDate).inDays + 1;

@@ -6,6 +6,8 @@ import '../../../core/utils/error_messages.dart';
 import '../../../core/utils/error_reporter.dart';
 import '../../../core/utils/ids.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../dashboard/dashboard_providers.dart';
+import '../../farm/domain/farm.dart';
 import '../crop_providers.dart';
 import '../domain/master_crop.dart';
 import '../domain/season.dart';
@@ -24,7 +26,24 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
   final _areaController = TextEditingController();
   MasterCrop? _selectedCrop;
   DateTime _sowingDate = DateTime.now();
+  String? _season;
+  AreaUnit? _areaUnit;
   bool _saving = false;
+
+  static const _seasons = ['kharif', 'rabi', 'zaid'];
+
+  /// Indian cropping calendar: Kharif sown Jun–Sep, Rabi Oct–Feb, Zaid Mar–May.
+  static String _seasonForMonth(int month) {
+    if (month >= 6 && month <= 9) return 'kharif';
+    if (month >= 3 && month <= 5) return 'zaid';
+    return 'rabi';
+  }
+
+  String _seasonLabel(AppLocalizations t, String season) => switch (season) {
+        'kharif' => t.seasonKharif,
+        'rabi' => t.seasonRabi,
+        _ => t.seasonZaid,
+      };
 
   @override
   void dispose() {
@@ -57,6 +76,8 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
               sowingDate: _sowingDate,
               variety: _varietyController.text.trim().isEmpty ? null : _varietyController.text.trim(),
               area: double.tryParse(_areaController.text.trim()),
+              areaUnit: _effectiveAreaUnit.name,
+              seasonName: _season ?? _seasonForMonth(_sowingDate.month),
             ),
           );
       ref.read(analyticsServiceProvider).logEvent('crop_added', parameters: {'cropId': crop.id});
@@ -67,6 +88,12 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
     } finally {
       if (mounted) setState(() => _saving = false);
     }
+  }
+
+  /// Defaults to the farm's own unit so crop area reads the same way.
+  AreaUnit get _effectiveAreaUnit {
+    final farm = ref.read(primaryFarmProvider);
+    return _areaUnit ?? (farm?.id == widget.farmId ? farm!.areaUnit : AreaUnit.acre);
   }
 
   @override
@@ -105,10 +132,41 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            TextField(
-              controller: _areaController,
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(labelText: t.areaLabel),
+            Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: TextField(
+                    controller: _areaController,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    decoration: InputDecoration(labelText: t.areaLabel),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: DropdownButtonFormField<AreaUnit>(
+                    initialValue: _effectiveAreaUnit,
+                    isExpanded: true,
+                    decoration: InputDecoration(labelText: t.areaUnitLabel),
+                    items: AreaUnit.values
+                        .map((u) => DropdownMenuItem(value: u, child: Text(u.name)))
+                        .toList(),
+                    onChanged: (u) => setState(() => _areaUnit = u),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              // Keyed on the sowing month so the default follows date changes
+              // until the farmer picks a season explicitly.
+              key: ValueKey(_season ?? _seasonForMonth(_sowingDate.month)),
+              initialValue: _season ?? _seasonForMonth(_sowingDate.month),
+              decoration: InputDecoration(labelText: t.seasonLabel),
+              items: _seasons
+                  .map((s) => DropdownMenuItem(value: s, child: Text(_seasonLabel(t, s))))
+                  .toList(),
+              onChanged: (s) => setState(() => _season = s),
             ),
             const SizedBox(height: 32),
             ElevatedButton(

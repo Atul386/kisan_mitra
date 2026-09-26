@@ -82,6 +82,7 @@ class LocalAuthRepository implements AuthRepository {
         language: Value(user.language ?? 'en'),
         state: Value(user.state),
         district: Value(user.district),
+        village: Value(user.village),
         updatedAt: Value(DateTime.now()),
         syncStatus: const Value(SyncStatus.pendingUpdate),
       ),
@@ -94,6 +95,12 @@ class LocalAuthRepository implements AuthRepository {
     await _prefs.remove(_currentUserIdKey);
   }
 
+  @override
+  Future<void> deleteAccount() async {
+    await _db.wipeAllData();
+    await _prefs.remove(_currentUserIdKey);
+  }
+
   AppUser _toAppUser(LocalUser row) => AppUser(
         id: row.id,
         name: row.name,
@@ -102,5 +109,6 @@ class LocalAuthRepository implements AuthRepository {
         language: row.language,
         state: row.state,
         district: row.district,
+        village: row.village,
       );
 }

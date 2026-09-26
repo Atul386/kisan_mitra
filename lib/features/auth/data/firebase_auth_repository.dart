@@ -53,6 +53,7 @@ class FirebaseAuthRepository implements AuthRepository {
         language: row.language,
         state: row.state,
         district: row.district,
+        village: row.village,
       );
     }
 
@@ -155,6 +156,7 @@ class FirebaseAuthRepository implements AuthRepository {
         language: Value(user.language ?? 'en'),
         state: Value(user.state),
         district: Value(user.district),
+        village: Value(user.village),
         updatedAt: Value(DateTime.now()),
         syncStatus: const Value(SyncStatus.pendingUpdate),
       ),
@@ -164,4 +166,18 @@ class FirebaseAuthRepository implements AuthRepository {
 
   @override
   Future<void> signOut() => _auth.signOut();
+
+  @override
+  Future<void> deleteAccount() async {
+    await _db.wipeAllData();
+    try {
+      await _auth.currentUser?.delete();
+    } on fb.FirebaseAuthException catch (e) {
+      // Firebase only allows deleting a recently signed-in account. Local
+      // data is already gone, so fall back to signing out; nothing is
+      // stored server-side yet (no Firestore sync).
+      if (e.code != 'requires-recent-login') rethrow;
+    }
+    await _auth.signOut();
+  }
 }

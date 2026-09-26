@@ -1227,6 +1227,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recent Expenses'**
   String get recentExpensesLabel;
+
+  /// No description provided for @seasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Season'**
+  String get seasonLabel;
+
+  /// No description provided for @seasonKharif.
+  ///
+  /// In en, this message translates to:
+  /// **'Kharif'**
+  String get seasonKharif;
+
+  /// No description provided for @seasonRabi.
+  ///
+  /// In en, this message translates to:
+  /// **'Rabi'**
+  String get seasonRabi;
+
+  /// No description provided for @seasonZaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Zaid (Summer)'**
+  String get seasonZaid;
+
+  /// No description provided for @farmLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm location'**
+  String get farmLocationLabel;
+
+  /// No description provided for @mapTapToMovePin.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the map to move the pin to your field'**
+  String get mapTapToMovePin;
+
+  /// No description provided for @mandiAllTab.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get mandiAllTab;
+
+  /// No description provided for @mandiFavouritesTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Favourites'**
+  String get mandiFavouritesTab;
+
+  /// No description provided for @noFavouritesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the star on a crop to add it to your favourites.'**
+  String get noFavouritesMessage;
+
+  /// No description provided for @addToFavourite.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favourites'**
+  String get addToFavourite;
+
+  /// No description provided for @removeFromFavourite.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favourites'**
+  String get removeFromFavourite;
+
+  /// No description provided for @setPriceAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Set price alert'**
+  String get setPriceAlert;
+
+  /// No description provided for @priceAlertDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Price alert for {commodity}'**
+  String priceAlertDialogTitle(String commodity);
+
+  /// No description provided for @priceAlertTargetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert me when price reaches (₹)'**
+  String get priceAlertTargetLabel;
+
+  /// No description provided for @priceAlertHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll get a notification when a price you log or a live mandi price reaches this amount.'**
+  String get priceAlertHelp;
+
+  /// No description provided for @removeAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove alert'**
+  String get removeAlert;
+
+  /// No description provided for @priceAlertActiveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert at ₹{price}'**
+  String priceAlertActiveLabel(String price);
+
+  /// No description provided for @priceAlertNotificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{commodity} price alert'**
+  String priceAlertNotificationTitle(String commodity);
+
+  /// No description provided for @priceAlertNotificationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{commodity} has reached ₹{price} — your target price.'**
+  String priceAlertNotificationBody(String commodity, String price);
+
+  /// No description provided for @suggestedQuestionsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested questions'**
+  String get suggestedQuestionsLabel;
+
+  /// No description provided for @suggestedQuestionPest.
+  ///
+  /// In en, this message translates to:
+  /// **'Which pest is attacking my crop?'**
+  String get suggestedQuestionPest;
+
+  /// No description provided for @suggestedQuestionFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Which fertilizer should I use now?'**
+  String get suggestedQuestionFertilizer;
+
+  /// No description provided for @suggestedQuestionIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'When should I water my crop next?'**
+  String get suggestedQuestionIrrigation;
+
+  /// No description provided for @suggestedQuestionWeather.
+  ///
+  /// In en, this message translates to:
+  /// **'Is today\'s weather good for spraying?'**
+  String get suggestedQuestionWeather;
+
+  /// No description provided for @voiceInputTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Speak your question'**
+  String get voiceInputTooltip;
+
+  /// No description provided for @voiceListeningLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening…'**
+  String get voiceListeningLabel;
+
+  /// No description provided for @voiceUnavailableMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice input isn\'t available on this phone. Please type your question.'**
+  String get voiceUnavailableMessage;
+
+  /// No description provided for @darkModeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get darkModeLabel;
+
+  /// No description provided for @dailyReminderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily farm plan reminder'**
+  String get dailyReminderLabel;
+
+  /// No description provided for @dailyReminderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every morning at 8 AM'**
+  String get dailyReminderSubtitle;
+
+  /// No description provided for @helpSupportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support'**
+  String get helpSupportTitle;
+
+  /// No description provided for @helpIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick answers to common questions.'**
+  String get helpIntro;
+
+  /// No description provided for @helpFaqOfflineQ.
+  ///
+  /// In en, this message translates to:
+  /// **'Does the app work without internet?'**
+  String get helpFaqOfflineQ;
+
+  /// No description provided for @helpFaqOfflineA.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes. Tasks, expenses, logs and check-ins are saved on your phone. Weather, live mandi prices and the assistant need internet.'**
+  String get helpFaqOfflineA;
+
+  /// No description provided for @helpFaqTasksQ.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do today\'s tasks come from?'**
+  String get helpFaqTasksQ;
+
+  /// No description provided for @helpFaqTasksA.
+  ///
+  /// In en, this message translates to:
+  /// **'They\'re created from your crop and its sowing date. Mark each one Done, Skip or Remind Me.'**
+  String get helpFaqTasksA;
+
+  /// No description provided for @helpFaqLanguageQ.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I change the language?'**
+  String get helpFaqLanguageQ;
+
+  /// No description provided for @helpFaqLanguageA.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Profile → Language and pick English, हिंदी or मराठी.'**
+  String get helpFaqLanguageA;
+
+  /// No description provided for @helpFaqDataQ.
+  ///
+  /// In en, this message translates to:
+  /// **'Is my farm data safe?'**
+  String get helpFaqDataQ;
+
+  /// No description provided for @helpFaqDataA.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data stays on your phone. You can delete it any time from Profile → Delete account.'**
+  String get helpFaqDataA;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get deleteAccountTitle;
+
+  /// No description provided for @deleteAccountConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes your profile, farms, crops, tasks, expenses and all logs from this phone. This can\'t be undone.'**
+  String get deleteAccountConfirmMessage;
+
+  /// No description provided for @deleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteButton;
 }
 
 class _AppLocalizationsDelegate

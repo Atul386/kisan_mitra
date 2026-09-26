@@ -112,6 +112,17 @@ class $LocalUsersTable extends LocalUsers
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _villageMeta = const VerificationMeta(
+    'village',
+  );
+  @override
+  late final GeneratedColumn<String> village = GeneratedColumn<String>(
+    'village',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _isGuestMeta = const VerificationMeta(
     'isGuest',
   );
@@ -139,6 +150,7 @@ class $LocalUsersTable extends LocalUsers
     language,
     state,
     district,
+    village,
     isGuest,
   ];
   @override
@@ -210,6 +222,12 @@ class $LocalUsersTable extends LocalUsers
         district.isAcceptableOrUnknown(data['district']!, _districtMeta),
       );
     }
+    if (data.containsKey('village')) {
+      context.handle(
+        _villageMeta,
+        village.isAcceptableOrUnknown(data['village']!, _villageMeta),
+      );
+    }
     if (data.containsKey('is_guest')) {
       context.handle(
         _isGuestMeta,
@@ -267,6 +285,10 @@ class $LocalUsersTable extends LocalUsers
         DriftSqlType.string,
         data['${effectivePrefix}district'],
       ),
+      village: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}village'],
+      ),
       isGuest: attachedDatabase.typeMapping.read(
         DriftSqlType.bool,
         data['${effectivePrefix}is_guest'],
@@ -294,6 +316,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
   final String language;
   final String? state;
   final String? district;
+  final String? village;
   final bool isGuest;
   const LocalUser({
     required this.id,
@@ -306,6 +329,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
     required this.language,
     this.state,
     this.district,
+    this.village,
     required this.isGuest,
   });
   @override
@@ -333,6 +357,9 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
     if (!nullToAbsent || district != null) {
       map['district'] = Variable<String>(district);
     }
+    if (!nullToAbsent || village != null) {
+      map['village'] = Variable<String>(village);
+    }
     map['is_guest'] = Variable<bool>(isGuest);
     return map;
   }
@@ -357,6 +384,9 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
       district: district == null && nullToAbsent
           ? const Value.absent()
           : Value(district),
+      village: village == null && nullToAbsent
+          ? const Value.absent()
+          : Value(village),
       isGuest: Value(isGuest),
     );
   }
@@ -377,6 +407,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
       language: serializer.fromJson<String>(json['language']),
       state: serializer.fromJson<String?>(json['state']),
       district: serializer.fromJson<String?>(json['district']),
+      village: serializer.fromJson<String?>(json['village']),
       isGuest: serializer.fromJson<bool>(json['isGuest']),
     );
   }
@@ -394,6 +425,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
       'language': serializer.toJson<String>(language),
       'state': serializer.toJson<String?>(state),
       'district': serializer.toJson<String?>(district),
+      'village': serializer.toJson<String?>(village),
       'isGuest': serializer.toJson<bool>(isGuest),
     };
   }
@@ -409,6 +441,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
     String? language,
     Value<String?> state = const Value.absent(),
     Value<String?> district = const Value.absent(),
+    Value<String?> village = const Value.absent(),
     bool? isGuest,
   }) => LocalUser(
     id: id ?? this.id,
@@ -421,6 +454,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
     language: language ?? this.language,
     state: state.present ? state.value : this.state,
     district: district.present ? district.value : this.district,
+    village: village.present ? village.value : this.village,
     isGuest: isGuest ?? this.isGuest,
   );
   LocalUser copyWithCompanion(LocalUsersCompanion data) {
@@ -437,6 +471,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
       language: data.language.present ? data.language.value : this.language,
       state: data.state.present ? data.state.value : this.state,
       district: data.district.present ? data.district.value : this.district,
+      village: data.village.present ? data.village.value : this.village,
       isGuest: data.isGuest.present ? data.isGuest.value : this.isGuest,
     );
   }
@@ -454,6 +489,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
           ..write('language: $language, ')
           ..write('state: $state, ')
           ..write('district: $district, ')
+          ..write('village: $village, ')
           ..write('isGuest: $isGuest')
           ..write(')'))
         .toString();
@@ -471,6 +507,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
     language,
     state,
     district,
+    village,
     isGuest,
   );
   @override
@@ -487,6 +524,7 @@ class LocalUser extends DataClass implements Insertable<LocalUser> {
           other.language == this.language &&
           other.state == this.state &&
           other.district == this.district &&
+          other.village == this.village &&
           other.isGuest == this.isGuest);
 }
 
@@ -501,6 +539,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
   final Value<String> language;
   final Value<String?> state;
   final Value<String?> district;
+  final Value<String?> village;
   final Value<bool> isGuest;
   final Value<int> rowid;
   const LocalUsersCompanion({
@@ -514,6 +553,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
     this.language = const Value.absent(),
     this.state = const Value.absent(),
     this.district = const Value.absent(),
+    this.village = const Value.absent(),
     this.isGuest = const Value.absent(),
     this.rowid = const Value.absent(),
   });
@@ -528,6 +568,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
     this.language = const Value.absent(),
     this.state = const Value.absent(),
     this.district = const Value.absent(),
+    this.village = const Value.absent(),
     this.isGuest = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id),
@@ -544,6 +585,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
     Expression<String>? language,
     Expression<String>? state,
     Expression<String>? district,
+    Expression<String>? village,
     Expression<bool>? isGuest,
     Expression<int>? rowid,
   }) {
@@ -558,6 +600,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
       if (language != null) 'language': language,
       if (state != null) 'state': state,
       if (district != null) 'district': district,
+      if (village != null) 'village': village,
       if (isGuest != null) 'is_guest': isGuest,
       if (rowid != null) 'rowid': rowid,
     });
@@ -574,6 +617,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
     Value<String>? language,
     Value<String?>? state,
     Value<String?>? district,
+    Value<String?>? village,
     Value<bool>? isGuest,
     Value<int>? rowid,
   }) {
@@ -588,6 +632,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
       language: language ?? this.language,
       state: state ?? this.state,
       district: district ?? this.district,
+      village: village ?? this.village,
       isGuest: isGuest ?? this.isGuest,
       rowid: rowid ?? this.rowid,
     );
@@ -628,6 +673,9 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
     if (district.present) {
       map['district'] = Variable<String>(district.value);
     }
+    if (village.present) {
+      map['village'] = Variable<String>(village.value);
+    }
     if (isGuest.present) {
       map['is_guest'] = Variable<bool>(isGuest.value);
     }
@@ -650,6 +698,7 @@ class LocalUsersCompanion extends UpdateCompanion<LocalUser> {
           ..write('language: $language, ')
           ..write('state: $state, ')
           ..write('district: $district, ')
+          ..write('village: $village, ')
           ..write('isGuest: $isGuest, ')
           ..write('rowid: $rowid')
           ..write(')'))
@@ -1728,6 +1777,28 @@ class $SeasonsTable extends Seasons with TableInfo<$SeasonsTable, Season> {
     type: DriftSqlType.double,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _areaUnitMeta = const VerificationMeta(
+    'areaUnit',
+  );
+  @override
+  late final GeneratedColumn<String> areaUnit = GeneratedColumn<String>(
+    'area_unit',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _seasonNameMeta = const VerificationMeta(
+    'seasonName',
+  );
+  @override
+  late final GeneratedColumn<String> seasonName = GeneratedColumn<String>(
+    'season_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _statusMeta = const VerificationMeta('status');
   @override
   late final GeneratedColumn<String> status = GeneratedColumn<String>(
@@ -1751,6 +1822,8 @@ class $SeasonsTable extends Seasons with TableInfo<$SeasonsTable, Season> {
     variety,
     sowingDate,
     area,
+    areaUnit,
+    seasonName,
     status,
   ];
   @override
@@ -1836,6 +1909,18 @@ class $SeasonsTable extends Seasons with TableInfo<$SeasonsTable, Season> {
         area.isAcceptableOrUnknown(data['area']!, _areaMeta),
       );
     }
+    if (data.containsKey('area_unit')) {
+      context.handle(
+        _areaUnitMeta,
+        areaUnit.isAcceptableOrUnknown(data['area_unit']!, _areaUnitMeta),
+      );
+    }
+    if (data.containsKey('season_name')) {
+      context.handle(
+        _seasonNameMeta,
+        seasonName.isAcceptableOrUnknown(data['season_name']!, _seasonNameMeta),
+      );
+    }
     if (data.containsKey('status')) {
       context.handle(
         _statusMeta,
@@ -1897,6 +1982,14 @@ class $SeasonsTable extends Seasons with TableInfo<$SeasonsTable, Season> {
         DriftSqlType.double,
         data['${effectivePrefix}area'],
       ),
+      areaUnit: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}area_unit'],
+      ),
+      seasonName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}season_name'],
+      ),
       status: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}status'],
@@ -1925,6 +2018,8 @@ class Season extends DataClass implements Insertable<Season> {
   final String? variety;
   final DateTime sowingDate;
   final double? area;
+  final String? areaUnit;
+  final String? seasonName;
   final String status;
   const Season({
     required this.id,
@@ -1938,6 +2033,8 @@ class Season extends DataClass implements Insertable<Season> {
     this.variety,
     required this.sowingDate,
     this.area,
+    this.areaUnit,
+    this.seasonName,
     required this.status,
   });
   @override
@@ -1964,6 +2061,12 @@ class Season extends DataClass implements Insertable<Season> {
     if (!nullToAbsent || area != null) {
       map['area'] = Variable<double>(area);
     }
+    if (!nullToAbsent || areaUnit != null) {
+      map['area_unit'] = Variable<String>(areaUnit);
+    }
+    if (!nullToAbsent || seasonName != null) {
+      map['season_name'] = Variable<String>(seasonName);
+    }
     map['status'] = Variable<String>(status);
     return map;
   }
@@ -1985,6 +2088,12 @@ class Season extends DataClass implements Insertable<Season> {
           : Value(variety),
       sowingDate: Value(sowingDate),
       area: area == null && nullToAbsent ? const Value.absent() : Value(area),
+      areaUnit: areaUnit == null && nullToAbsent
+          ? const Value.absent()
+          : Value(areaUnit),
+      seasonName: seasonName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(seasonName),
       status: Value(status),
     );
   }
@@ -2006,6 +2115,8 @@ class Season extends DataClass implements Insertable<Season> {
       variety: serializer.fromJson<String?>(json['variety']),
       sowingDate: serializer.fromJson<DateTime>(json['sowingDate']),
       area: serializer.fromJson<double?>(json['area']),
+      areaUnit: serializer.fromJson<String?>(json['areaUnit']),
+      seasonName: serializer.fromJson<String?>(json['seasonName']),
       status: serializer.fromJson<String>(json['status']),
     );
   }
@@ -2024,6 +2135,8 @@ class Season extends DataClass implements Insertable<Season> {
       'variety': serializer.toJson<String?>(variety),
       'sowingDate': serializer.toJson<DateTime>(sowingDate),
       'area': serializer.toJson<double?>(area),
+      'areaUnit': serializer.toJson<String?>(areaUnit),
+      'seasonName': serializer.toJson<String?>(seasonName),
       'status': serializer.toJson<String>(status),
     };
   }
@@ -2040,6 +2153,8 @@ class Season extends DataClass implements Insertable<Season> {
     Value<String?> variety = const Value.absent(),
     DateTime? sowingDate,
     Value<double?> area = const Value.absent(),
+    Value<String?> areaUnit = const Value.absent(),
+    Value<String?> seasonName = const Value.absent(),
     String? status,
   }) => Season(
     id: id ?? this.id,
@@ -2053,6 +2168,8 @@ class Season extends DataClass implements Insertable<Season> {
     variety: variety.present ? variety.value : this.variety,
     sowingDate: sowingDate ?? this.sowingDate,
     area: area.present ? area.value : this.area,
+    areaUnit: areaUnit.present ? areaUnit.value : this.areaUnit,
+    seasonName: seasonName.present ? seasonName.value : this.seasonName,
     status: status ?? this.status,
   );
   Season copyWithCompanion(SeasonsCompanion data) {
@@ -2072,6 +2189,10 @@ class Season extends DataClass implements Insertable<Season> {
           ? data.sowingDate.value
           : this.sowingDate,
       area: data.area.present ? data.area.value : this.area,
+      areaUnit: data.areaUnit.present ? data.areaUnit.value : this.areaUnit,
+      seasonName: data.seasonName.present
+          ? data.seasonName.value
+          : this.seasonName,
       status: data.status.present ? data.status.value : this.status,
     );
   }
@@ -2090,6 +2211,8 @@ class Season extends DataClass implements Insertable<Season> {
           ..write('variety: $variety, ')
           ..write('sowingDate: $sowingDate, ')
           ..write('area: $area, ')
+          ..write('areaUnit: $areaUnit, ')
+          ..write('seasonName: $seasonName, ')
           ..write('status: $status')
           ..write(')'))
         .toString();
@@ -2108,6 +2231,8 @@ class Season extends DataClass implements Insertable<Season> {
     variety,
     sowingDate,
     area,
+    areaUnit,
+    seasonName,
     status,
   );
   @override
@@ -2125,6 +2250,8 @@ class Season extends DataClass implements Insertable<Season> {
           other.variety == this.variety &&
           other.sowingDate == this.sowingDate &&
           other.area == this.area &&
+          other.areaUnit == this.areaUnit &&
+          other.seasonName == this.seasonName &&
           other.status == this.status);
 }
 
@@ -2140,6 +2267,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
   final Value<String?> variety;
   final Value<DateTime> sowingDate;
   final Value<double?> area;
+  final Value<String?> areaUnit;
+  final Value<String?> seasonName;
   final Value<String> status;
   final Value<int> rowid;
   const SeasonsCompanion({
@@ -2154,6 +2283,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
     this.variety = const Value.absent(),
     this.sowingDate = const Value.absent(),
     this.area = const Value.absent(),
+    this.areaUnit = const Value.absent(),
+    this.seasonName = const Value.absent(),
     this.status = const Value.absent(),
     this.rowid = const Value.absent(),
   });
@@ -2169,6 +2300,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
     this.variety = const Value.absent(),
     required DateTime sowingDate,
     this.area = const Value.absent(),
+    this.areaUnit = const Value.absent(),
+    this.seasonName = const Value.absent(),
     this.status = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id),
@@ -2190,6 +2323,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
     Expression<String>? variety,
     Expression<DateTime>? sowingDate,
     Expression<double>? area,
+    Expression<String>? areaUnit,
+    Expression<String>? seasonName,
     Expression<String>? status,
     Expression<int>? rowid,
   }) {
@@ -2205,6 +2340,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
       if (variety != null) 'variety': variety,
       if (sowingDate != null) 'sowing_date': sowingDate,
       if (area != null) 'area': area,
+      if (areaUnit != null) 'area_unit': areaUnit,
+      if (seasonName != null) 'season_name': seasonName,
       if (status != null) 'status': status,
       if (rowid != null) 'rowid': rowid,
     });
@@ -2222,6 +2359,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
     Value<String?>? variety,
     Value<DateTime>? sowingDate,
     Value<double?>? area,
+    Value<String?>? areaUnit,
+    Value<String?>? seasonName,
     Value<String>? status,
     Value<int>? rowid,
   }) {
@@ -2237,6 +2376,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
       variety: variety ?? this.variety,
       sowingDate: sowingDate ?? this.sowingDate,
       area: area ?? this.area,
+      areaUnit: areaUnit ?? this.areaUnit,
+      seasonName: seasonName ?? this.seasonName,
       status: status ?? this.status,
       rowid: rowid ?? this.rowid,
     );
@@ -2280,6 +2421,12 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
     if (area.present) {
       map['area'] = Variable<double>(area.value);
     }
+    if (areaUnit.present) {
+      map['area_unit'] = Variable<String>(areaUnit.value);
+    }
+    if (seasonName.present) {
+      map['season_name'] = Variable<String>(seasonName.value);
+    }
     if (status.present) {
       map['status'] = Variable<String>(status.value);
     }
@@ -2303,6 +2450,8 @@ class SeasonsCompanion extends UpdateCompanion<Season> {
           ..write('variety: $variety, ')
           ..write('sowingDate: $sowingDate, ')
           ..write('area: $area, ')
+          ..write('areaUnit: $areaUnit, ')
+          ..write('seasonName: $seasonName, ')
           ..write('status: $status, ')
           ..write('rowid: $rowid')
           ..write(')'))
@@ -8362,6 +8511,7 @@ typedef $$LocalUsersTableCreateCompanionBuilder =
       Value<String> language,
       Value<String?> state,
       Value<String?> district,
+      Value<String?> village,
       Value<bool> isGuest,
       Value<int> rowid,
     });
@@ -8377,6 +8527,7 @@ typedef $$LocalUsersTableUpdateCompanionBuilder =
       Value<String> language,
       Value<String?> state,
       Value<String?> district,
+      Value<String?> village,
       Value<bool> isGuest,
       Value<int> rowid,
     });
@@ -8438,6 +8589,11 @@ class $$LocalUsersTableFilterComposer
 
   ColumnFilters<String> get district => $composableBuilder(
     column: $table.district,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get village => $composableBuilder(
+    column: $table.village,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8506,6 +8662,11 @@ class $$LocalUsersTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get village => $composableBuilder(
+    column: $table.village,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<bool> get isGuest => $composableBuilder(
     column: $table.isGuest,
     builder: (column) => ColumnOrderings(column),
@@ -8554,6 +8715,9 @@ class $$LocalUsersTableAnnotationComposer
   GeneratedColumn<String> get district =>
       $composableBuilder(column: $table.district, builder: (column) => column);
 
+  GeneratedColumn<String> get village =>
+      $composableBuilder(column: $table.village, builder: (column) => column);
+
   GeneratedColumn<bool> get isGuest =>
       $composableBuilder(column: $table.isGuest, builder: (column) => column);
 }
@@ -8599,6 +8763,7 @@ class $$LocalUsersTableTableManager
                 Value<String> language = const Value.absent(),
                 Value<String?> state = const Value.absent(),
                 Value<String?> district = const Value.absent(),
+                Value<String?> village = const Value.absent(),
                 Value<bool> isGuest = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => LocalUsersCompanion(
@@ -8612,6 +8777,7 @@ class $$LocalUsersTableTableManager
                 language: language,
                 state: state,
                 district: district,
+                village: village,
                 isGuest: isGuest,
                 rowid: rowid,
               ),
@@ -8627,6 +8793,7 @@ class $$LocalUsersTableTableManager
                 Value<String> language = const Value.absent(),
                 Value<String?> state = const Value.absent(),
                 Value<String?> district = const Value.absent(),
+                Value<String?> village = const Value.absent(),
                 Value<bool> isGuest = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => LocalUsersCompanion.insert(
@@ -8640,6 +8807,7 @@ class $$LocalUsersTableTableManager
                 language: language,
                 state: state,
                 district: district,
+                village: village,
                 isGuest: isGuest,
                 rowid: rowid,
               ),
@@ -9105,6 +9273,8 @@ typedef $$SeasonsTableCreateCompanionBuilder =
       Value<String?> variety,
       required DateTime sowingDate,
       Value<double?> area,
+      Value<String?> areaUnit,
+      Value<String?> seasonName,
       Value<String> status,
       Value<int> rowid,
     });
@@ -9121,6 +9291,8 @@ typedef $$SeasonsTableUpdateCompanionBuilder =
       Value<String?> variety,
       Value<DateTime> sowingDate,
       Value<double?> area,
+      Value<String?> areaUnit,
+      Value<String?> seasonName,
       Value<String> status,
       Value<int> rowid,
     });
@@ -9187,6 +9359,16 @@ class $$SeasonsTableFilterComposer
 
   ColumnFilters<double> get area => $composableBuilder(
     column: $table.area,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get areaUnit => $composableBuilder(
+    column: $table.areaUnit,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get seasonName => $composableBuilder(
+    column: $table.seasonName,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9260,6 +9442,16 @@ class $$SeasonsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get areaUnit => $composableBuilder(
+    column: $table.areaUnit,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get seasonName => $composableBuilder(
+    column: $table.seasonName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get status => $composableBuilder(
     column: $table.status,
     builder: (column) => ColumnOrderings(column),
@@ -9313,6 +9505,14 @@ class $$SeasonsTableAnnotationComposer
   GeneratedColumn<double> get area =>
       $composableBuilder(column: $table.area, builder: (column) => column);
 
+  GeneratedColumn<String> get areaUnit =>
+      $composableBuilder(column: $table.areaUnit, builder: (column) => column);
+
+  GeneratedColumn<String> get seasonName => $composableBuilder(
+    column: $table.seasonName,
+    builder: (column) => column,
+  );
+
   GeneratedColumn<String> get status =>
       $composableBuilder(column: $table.status, builder: (column) => column);
 }
@@ -9356,6 +9556,8 @@ class $$SeasonsTableTableManager
                 Value<String?> variety = const Value.absent(),
                 Value<DateTime> sowingDate = const Value.absent(),
                 Value<double?> area = const Value.absent(),
+                Value<String?> areaUnit = const Value.absent(),
+                Value<String?> seasonName = const Value.absent(),
                 Value<String> status = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => SeasonsCompanion(
@@ -9370,6 +9572,8 @@ class $$SeasonsTableTableManager
                 variety: variety,
                 sowingDate: sowingDate,
                 area: area,
+                areaUnit: areaUnit,
+                seasonName: seasonName,
                 status: status,
                 rowid: rowid,
               ),
@@ -9386,6 +9590,8 @@ class $$SeasonsTableTableManager
                 Value<String?> variety = const Value.absent(),
                 required DateTime sowingDate,
                 Value<double?> area = const Value.absent(),
+                Value<String?> areaUnit = const Value.absent(),
+                Value<String?> seasonName = const Value.absent(),
                 Value<String> status = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => SeasonsCompanion.insert(
@@ -9400,6 +9606,8 @@ class $$SeasonsTableTableManager
                 variety: variety,
                 sowingDate: sowingDate,
                 area: area,
+                areaUnit: areaUnit,
+                seasonName: seasonName,
                 status: status,
                 rowid: rowid,
               ),

@@ -25,6 +25,7 @@ import '../features/onboarding/presentation/language_selection_screen.dart';
 import '../features/onboarding/presentation/splash_screen.dart';
 import '../features/profile/presentation/profile_setup_screen.dart';
 import '../features/settings/presentation/about_screen.dart';
+import '../features/settings/presentation/help_screen.dart';
 import '../features/settings/presentation/privacy_screen.dart';
 import '../features/settings/presentation/settings_tab.dart';
 import '../features/spray/presentation/add_spray_screen.dart';
@@ -127,6 +128,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/checkin', builder: (c, s) => const DailyCheckinScreen()),
       GoRoute(path: '/about', builder: (c, s) => const AboutScreen()),
       GoRoute(path: '/privacy', builder: (c, s) => const PrivacyScreen()),
+      GoRoute(path: '/help', builder: (c, s) => const HelpScreen()),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>
             DashboardShell(navigationShell: navigationShell),

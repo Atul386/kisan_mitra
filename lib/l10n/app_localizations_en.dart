@@ -639,4 +639,151 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recentExpensesLabel => 'Recent Expenses';
+
+  @override
+  String get seasonLabel => 'Season';
+
+  @override
+  String get seasonKharif => 'Kharif';
+
+  @override
+  String get seasonRabi => 'Rabi';
+
+  @override
+  String get seasonZaid => 'Zaid (Summer)';
+
+  @override
+  String get farmLocationLabel => 'Farm location';
+
+  @override
+  String get mapTapToMovePin => 'Tap the map to move the pin to your field';
+
+  @override
+  String get mandiAllTab => 'All';
+
+  @override
+  String get mandiFavouritesTab => 'Favourites';
+
+  @override
+  String get noFavouritesMessage =>
+      'Tap the star on a crop to add it to your favourites.';
+
+  @override
+  String get addToFavourite => 'Add to favourites';
+
+  @override
+  String get removeFromFavourite => 'Remove from favourites';
+
+  @override
+  String get setPriceAlert => 'Set price alert';
+
+  @override
+  String priceAlertDialogTitle(String commodity) {
+    return 'Price alert for $commodity';
+  }
+
+  @override
+  String get priceAlertTargetLabel => 'Alert me when price reaches (₹)';
+
+  @override
+  String get priceAlertHelp =>
+      'You\'ll get a notification when a price you log or a live mandi price reaches this amount.';
+
+  @override
+  String get removeAlert => 'Remove alert';
+
+  @override
+  String priceAlertActiveLabel(String price) {
+    return 'Alert at ₹$price';
+  }
+
+  @override
+  String priceAlertNotificationTitle(String commodity) {
+    return '$commodity price alert';
+  }
+
+  @override
+  String priceAlertNotificationBody(String commodity, String price) {
+    return '$commodity has reached ₹$price — your target price.';
+  }
+
+  @override
+  String get suggestedQuestionsLabel => 'Suggested questions';
+
+  @override
+  String get suggestedQuestionPest => 'Which pest is attacking my crop?';
+
+  @override
+  String get suggestedQuestionFertilizer =>
+      'Which fertilizer should I use now?';
+
+  @override
+  String get suggestedQuestionIrrigation => 'When should I water my crop next?';
+
+  @override
+  String get suggestedQuestionWeather =>
+      'Is today\'s weather good for spraying?';
+
+  @override
+  String get voiceInputTooltip => 'Speak your question';
+
+  @override
+  String get voiceListeningLabel => 'Listening…';
+
+  @override
+  String get voiceUnavailableMessage =>
+      'Voice input isn\'t available on this phone. Please type your question.';
+
+  @override
+  String get darkModeLabel => 'Dark mode';
+
+  @override
+  String get dailyReminderLabel => 'Daily farm plan reminder';
+
+  @override
+  String get dailyReminderSubtitle => 'Every morning at 8 AM';
+
+  @override
+  String get helpSupportTitle => 'Help & Support';
+
+  @override
+  String get helpIntro => 'Quick answers to common questions.';
+
+  @override
+  String get helpFaqOfflineQ => 'Does the app work without internet?';
+
+  @override
+  String get helpFaqOfflineA =>
+      'Yes. Tasks, expenses, logs and check-ins are saved on your phone. Weather, live mandi prices and the assistant need internet.';
+
+  @override
+  String get helpFaqTasksQ => 'Where do today\'s tasks come from?';
+
+  @override
+  String get helpFaqTasksA =>
+      'They\'re created from your crop and its sowing date. Mark each one Done, Skip or Remind Me.';
+
+  @override
+  String get helpFaqLanguageQ => 'How do I change the language?';
+
+  @override
+  String get helpFaqLanguageA =>
+      'Go to Profile → Language and pick English, हिंदी or मराठी.';
+
+  @override
+  String get helpFaqDataQ => 'Is my farm data safe?';
+
+  @override
+  String get helpFaqDataA =>
+      'Your data stays on your phone. You can delete it any time from Profile → Delete account.';
+
+  @override
+  String get deleteAccountTitle => 'Delete account';
+
+  @override
+  String get deleteAccountConfirmMessage =>
+      'This permanently deletes your profile, farms, crops, tasks, expenses and all logs from this phone. This can\'t be undone.';
+
+  @override
+  String get deleteButton => 'Delete';
 }

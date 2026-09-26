@@ -41,6 +41,7 @@ class LocalUsers extends Table with SyncableColumns {
   TextColumn get language => text().withDefault(const Constant('en'))();
   TextColumn get state => text().nullable()();
   TextColumn get district => text().nullable()();
+  TextColumn get village => text().nullable()();
   BoolColumn get isGuest => boolean().withDefault(const Constant(true))();
 }
 
@@ -68,6 +69,8 @@ class Seasons extends Table with SyncableColumns {
   TextColumn get variety => text().nullable()();
   DateTimeColumn get sowingDate => dateTime()();
   RealColumn get area => real().nullable()();
+  TextColumn get areaUnit => text().nullable()();
+  TextColumn get seasonName => text().nullable()(); // kharif, rabi, zaid
   TextColumn get status => text().withDefault(const Constant('active'))();
 }
 

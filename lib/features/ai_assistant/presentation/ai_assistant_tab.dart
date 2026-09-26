@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../core/analytics/analytics_providers.dart';
 import '../../../core/theme/app_colors.dart';
@@ -23,16 +24,63 @@ class _AiAssistantTabState extends ConsumerState<AiAssistantTab> {
   final _controller = TextEditingController();
   final _scrollController = ScrollController();
   final List<AiMessage> _messages = [];
+  final _speech = SpeechToText();
+  bool _speechReady = false;
+  bool _listening = false;
   bool _sending = false;
 
   @override
   void dispose() {
+    _speech.cancel();
     _controller.dispose();
     _scrollController.dispose();
     super.dispose();
   }
 
-  Future<void> _send() async {
+  /// Fills the text box with what the farmer says, in the app's language,
+  /// so they can check it before sending.
+  Future<void> _toggleListening() async {
+    final t = AppLocalizations.of(context)!;
+    if (_listening) {
+      await _speech.stop();
+      setState(() => _listening = false);
+      return;
+    }
+    if (!_speechReady) {
+      _speechReady = await _speech.initialize(
+        onStatus: (status) {
+          if (mounted && (status == SpeechToText.doneStatus || status == SpeechToText.notListeningStatus)) {
+            setState(() => _listening = false);
+          }
+        },
+        onError: (_) {
+          if (mounted) setState(() => _listening = false);
+        },
+      );
+    }
+    if (!mounted) return;
+    if (!_speechReady) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(t.voiceUnavailableMessage)));
+      return;
+    }
+    final languageCode = Localizations.localeOf(context).languageCode;
+    setState(() => _listening = true);
+    await _speech.listen(
+      onResult: (result) {
+        _controller.text = result.recognizedWords;
+        _controller.selection = TextSelection.collapsed(offset: _controller.text.length);
+      },
+      listenOptions: SpeechListenOptions(
+        localeId: '${languageCode}_IN',
+        partialResults: true,
+        pauseFor: const Duration(seconds: 3),
+        listenFor: const Duration(seconds: 30),
+      ),
+    );
+  }
+
+  Future<void> _send([String? preset]) async {
+    if (preset != null) _controller.text = preset;
     final question = _controller.text.trim();
     if (question.isEmpty || _sending) return;
     final t = AppLocalizations.of(context)!;
@@ -82,23 +130,7 @@ class _AiAssistantTabState extends ConsumerState<AiAssistantTab> {
           children: [
             Expanded(
               child: _messages.isEmpty
-                  ? Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(Icons.mic_none_outlined, size: 48, color: AppColors.textSecondary),
-                            const SizedBox(height: 12),
-                            Text(
-                              t.aiAssistantHint,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(color: AppColors.textSecondary),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
+                  ? _SuggestedQuestions(onSelected: _send)
                   : ListView.builder(
                       controller: _scrollController,
                       padding: const EdgeInsets.all(16),
@@ -116,13 +148,23 @@ class _AiAssistantTabState extends ConsumerState<AiAssistantTab> {
                     Expanded(
                       child: TextField(
                         controller: _controller,
-                        decoration: InputDecoration(hintText: t.aiAssistantHint),
+                        decoration: InputDecoration(
+                          hintText: _listening ? t.voiceListeningLabel : t.aiAssistantHint,
+                        ),
                         onSubmitted: (_) => _send(),
                       ),
                     ),
                     const SizedBox(width: 8),
+                    IconButton.filledTonal(
+                      onPressed: _sending ? null : _toggleListening,
+                      isSelected: _listening,
+                      icon: const Icon(Icons.mic_none_rounded),
+                      selectedIcon: const Icon(Icons.mic_rounded, color: AppColors.error),
+                      tooltip: t.voiceInputTooltip,
+                    ),
+                    const SizedBox(width: 4),
                     IconButton.filled(
-                      onPressed: _sending ? null : _send,
+                      onPressed: _sending ? null : () => _send(),
                       icon: const Icon(Icons.send),
                       tooltip: t.aiAssistantSend,
                     ),
@@ -133,6 +175,45 @@ class _AiAssistantTabState extends ConsumerState<AiAssistantTab> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _SuggestedQuestions extends StatelessWidget {
+  const _SuggestedQuestions({required this.onSelected});
+
+  final ValueChanged<String> onSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    final questions = [
+      t.suggestedQuestionPest,
+      t.suggestedQuestionFertilizer,
+      t.suggestedQuestionIrrigation,
+      t.suggestedQuestionWeather,
+    ];
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        Text(
+          t.aiAssistantHint,
+          style: const TextStyle(color: AppColors.textSecondary),
+        ),
+        const SizedBox(height: 20),
+        Text(t.suggestedQuestionsLabel, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+        const SizedBox(height: 8),
+        for (final q in questions)
+          Card(
+            margin: const EdgeInsets.only(bottom: 8),
+            child: ListTile(
+              leading: const Icon(Icons.help_outline_rounded, color: AppColors.primary),
+              title: Text(q),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => onSelected(q),
+            ),
+          ),
+      ],
     );
   }
 }

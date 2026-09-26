@@ -21,6 +21,9 @@ abstract class AuthRepository {
   Future<void> updateProfile(AppUser user);
 
   Future<void> signOut();
+
+  /// Permanently removes the farmer's account and all their local data.
+  Future<void> deleteAccount();
 }
 
 class AuthNotConfiguredException implements Exception {

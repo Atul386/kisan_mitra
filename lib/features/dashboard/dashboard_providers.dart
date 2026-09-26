@@ -31,6 +31,10 @@ final ensureDailyPlanReminderProvider = FutureProvider<void>((ref) async {
   final season = ref.watch(primaryActiveSeasonProvider).value;
   if (season == null) return;
   final notifications = ref.watch(notificationServiceProvider);
+  if (!ref.watch(dailyReminderEnabledProvider)) {
+    await notifications.cancel(_dailyPlanReminderId);
+    return;
+  }
   await notifications.requestPermission();
   await notifications.scheduleDaily(
     id: _dailyPlanReminderId,

@@ -37,6 +37,8 @@ class LocalSeasonRepository implements SeasonRepository {
             sowingDate: season.sowingDate,
             variety: Value(season.variety),
             area: Value(season.area),
+            areaUnit: Value(season.areaUnit),
+            seasonName: Value(season.seasonName),
             status: Value(season.status),
             createdAt: now,
             updatedAt: now,
@@ -65,6 +67,8 @@ class LocalSeasonRepository implements SeasonRepository {
         sowingDate: row.sowingDate,
         variety: row.variety,
         area: row.area,
+        areaUnit: row.areaUnit,
+        seasonName: row.seasonName,
         status: row.status,
       );
 }

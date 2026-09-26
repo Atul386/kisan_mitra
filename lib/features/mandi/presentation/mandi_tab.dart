@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/notifications/notification_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../domain/live_mandi_price.dart';
 import '../mandi_providers.dart';
+import '../mandi_watchlist.dart';
 
 /// Two sources feed this screen (see lib/features/mandi/README.md):
 /// government Agmarknet live prices when a data.gov.in API key is
@@ -19,47 +21,146 @@ class MandiTab extends ConsumerWidget {
     final t = AppLocalizations.of(context)!;
     final trends = ref.watch(mandiTrendsProvider);
     final livePrices = ref.watch(liveMandiPricesProvider).value ?? const [];
+    final watchlist = ref.watch(mandiWatchlistProvider);
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(title: Text(t.mandi)),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.push('/add-mandi-price'),
-        icon: const Icon(Icons.add),
-        label: Text(t.addMandiPrice),
-      ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
-          children: [
-            if (livePrices.isNotEmpty)
-              _LiveMandiPricesSection(prices: livePrices)
-            else
-              _InfoBanner(text: t.mandiManualTrackingNote),
-            const SizedBox(height: 20),
-            Text(t.yourTrackedPricesLabel, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-            const SizedBox(height: 12),
-            if (trends.isEmpty)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32),
-                child: Column(
-                  children: [
-                    const Icon(Icons.storefront_outlined, size: 40, color: AppColors.textSecondary),
-                    const SizedBox(height: 12),
-                    Text(
-                      t.noMandiPricesMessage,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: AppColors.textSecondary),
-                    ),
+    final favouriteTrends = trends.where((tr) => watchlist.isFavourite(tr.latest.commodity)).toList();
+    final favouriteLive = livePrices.where((p) => watchlist.isFavourite(p.commodity)).toList();
+
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        appBar: AppBar(
+          title: Text(t.mandi),
+          bottom: TabBar(tabs: [Tab(text: t.mandiAllTab), Tab(text: t.mandiFavouritesTab)]),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () => context.push('/add-mandi-price'),
+          icon: const Icon(Icons.add),
+          label: Text(t.addMandiPrice),
+        ),
+        body: SafeArea(
+          child: TabBarView(
+            children: [
+              ListView(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
+                children: [
+                  if (livePrices.isNotEmpty)
+                    _LiveMandiPricesSection(prices: livePrices)
+                  else
+                    _InfoBanner(text: t.mandiManualTrackingNote),
+                  const SizedBox(height: 20),
+                  Text(t.yourTrackedPricesLabel, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+                  const SizedBox(height: 12),
+                  if (trends.isEmpty)
+                    _EmptyMessage(icon: Icons.storefront_outlined, text: t.noMandiPricesMessage)
+                  else
+                    for (final trend in trends) _MandiTrendCard(trend: trend, t: t),
+                ],
+              ),
+              ListView(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
+                children: [
+                  if (favouriteTrends.isEmpty && favouriteLive.isEmpty)
+                    _EmptyMessage(icon: Icons.star_border_rounded, text: t.noFavouritesMessage)
+                  else ...[
+                    for (final trend in favouriteTrends) _MandiTrendCard(trend: trend, t: t),
+                    for (final price in favouriteLive) _LivePriceTile(price: price),
                   ],
-                ),
-              )
-            else
-              for (final trend in trends) _MandiTrendCard(trend: trend, t: t),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+}
+
+class _EmptyMessage extends StatelessWidget {
+  const _EmptyMessage({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 32),
+      child: Column(
+        children: [
+          Icon(icon, size: 40, color: AppColors.textSecondary),
+          const SizedBox(height: 12),
+          Text(text, textAlign: TextAlign.center, style: const TextStyle(color: AppColors.textSecondary)),
+        ],
+      ),
+    );
+  }
+}
+
+class _LivePriceTile extends StatelessWidget {
+  const _LivePriceTile({required this.price});
+
+  final LiveMandiPrice price;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ListTile(
+        leading: const Icon(Icons.podcasts_rounded, color: AppColors.warning),
+        title: Text(price.commodity, style: const TextStyle(fontWeight: FontWeight.w700)),
+        subtitle: Text('${price.market} • ${t.liveMandiPricesTitle}'),
+        trailing: Text('₹${price.modalPrice.toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.w700)),
+      ),
+    );
+  }
+}
+
+Future<void> _showPriceAlertDialog(BuildContext context, WidgetRef ref, String commodity) async {
+  final t = AppLocalizations.of(context)!;
+  final existing = ref.read(mandiWatchlistProvider).alertFor(commodity);
+  final controller = TextEditingController(text: existing?.toStringAsFixed(0) ?? '');
+  final result = await showDialog<({bool remove, double? price})>(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(t.priceAlertDialogTitle(commodity)),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: controller,
+            autofocus: true,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: InputDecoration(labelText: t.priceAlertTargetLabel),
+          ),
+          const SizedBox(height: 10),
+          Text(t.priceAlertHelp, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+        ],
+      ),
+      actions: [
+        if (existing != null)
+          TextButton(
+            onPressed: () => Navigator.pop(context, (remove: true, price: null)),
+            child: Text(t.removeAlert, style: const TextStyle(color: AppColors.error)),
+          ),
+        TextButton(onPressed: () => Navigator.pop(context), child: Text(t.cancel)),
+        FilledButton(
+          onPressed: () => Navigator.pop(context, (remove: false, price: double.tryParse(controller.text.trim()))),
+          child: Text(t.save),
+        ),
+      ],
+    ),
+  );
+  controller.dispose();
+  if (result == null) return;
+  if (result.remove) {
+    await ref.read(mandiWatchlistProvider.notifier).setAlert(commodity, null);
+  } else if (result.price != null && result.price! > 0) {
+    await ref.read(notificationServiceProvider).requestPermission();
+    await ref.read(mandiWatchlistProvider.notifier).setAlert(commodity, result.price);
   }
 }
 
@@ -175,14 +276,18 @@ class _LiveMandiPricesSection extends StatelessWidget {
   }
 }
 
-class _MandiTrendCard extends StatelessWidget {
+class _MandiTrendCard extends ConsumerWidget {
   const _MandiTrendCard({required this.trend, required this.t});
 
   final MandiTrend trend;
   final AppLocalizations t;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final commodity = trend.latest.commodity;
+    final watchlist = ref.watch(mandiWatchlistProvider);
+    final isFavourite = watchlist.isFavourite(commodity);
+    final alert = watchlist.alertFor(commodity);
     final change = trend.change;
     final isUp = (change ?? 0) >= 0;
 
@@ -216,7 +321,38 @@ class _MandiTrendCard extends StatelessWidget {
                   ].join(' • '),
                   style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
                 ),
+                if (alert != null) ...[
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(Icons.notifications_active_outlined, size: 14, color: AppColors.primary),
+                      const SizedBox(width: 4),
+                      Text(
+                        t.priceAlertActiveLabel(alert.toStringAsFixed(0)),
+                        style: const TextStyle(color: AppColors.primary, fontSize: 12, fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ],
               ],
+            ),
+          ),
+          IconButton(
+            visualDensity: VisualDensity.compact,
+            tooltip: isFavourite ? t.removeFromFavourite : t.addToFavourite,
+            onPressed: () => ref.read(mandiWatchlistProvider.notifier).toggleFavourite(commodity),
+            icon: Icon(
+              isFavourite ? Icons.star_rounded : Icons.star_border_rounded,
+              color: isFavourite ? AppColors.warning : AppColors.textSecondary,
+            ),
+          ),
+          IconButton(
+            visualDensity: VisualDensity.compact,
+            tooltip: t.setPriceAlert,
+            onPressed: () => _showPriceAlertDialog(context, ref, commodity),
+            icon: Icon(
+              alert != null ? Icons.notifications_active_rounded : Icons.notifications_none_rounded,
+              color: alert != null ? AppColors.primary : AppColors.textSecondary,
             ),
           ),
           Column(

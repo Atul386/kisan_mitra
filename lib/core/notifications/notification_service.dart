@@ -109,6 +109,29 @@ class NotificationService {
     );
   }
 
+  /// Immediate notification (e.g. a mandi price alert that just hit).
+  Future<void> showNow({required int id, required String title, required String body}) async {
+    await init();
+    await _plugin.show(
+      id: id,
+      title: title,
+      body: body,
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'mandi_price_alerts',
+          'Mandi Price Alerts',
+          channelDescription: 'Alerts when a crop price reaches your target',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+        iOS: DarwinNotificationDetails(),
+        macOS: DarwinNotificationDetails(),
+      ),
+    );
+  }
+
+  Future<void> cancelAll() => _plugin.cancelAll();
+
   Future<void> cancel(int id) => _plugin.cancel(id: id);
 }
 

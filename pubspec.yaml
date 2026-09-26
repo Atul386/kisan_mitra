@@ -57,6 +57,9 @@ dependencies:
   location_picker_plus: ^2.1.0
   firebase_core: ^4.15.0
   firebase_auth: ^6.7.0
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+  speech_to_text: ^7.4.0
 
 dev_dependencies:
   flutter_test:

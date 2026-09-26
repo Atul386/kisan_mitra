@@ -11,6 +11,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_timezone
   geolocator_windows
   permission_handler_windows
+  speech_to_text_windows
   sqlite3_flutter_libs
 )
 

@@ -53,6 +53,8 @@
 		<string>KisanMitra needs photo access to attach crop and receipt photos.</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>KisanMitra uses your microphone for voice questions to the assistant.</string>
+		<key>NSSpeechRecognitionUsageDescription</key>
+		<string>KisanMitra turns your spoken questions into text for the assistant.</string>
 		<key>UIStatusBarHidden</key>
 		<false/>
 	</dict>

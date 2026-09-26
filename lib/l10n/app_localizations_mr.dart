@@ -637,4 +637,150 @@ class AppLocalizationsMr extends AppLocalizations {
 
   @override
   String get recentExpensesLabel => 'अलीकडील खर्च';
+
+  @override
+  String get seasonLabel => 'हंगाम';
+
+  @override
+  String get seasonKharif => 'खरीप';
+
+  @override
+  String get seasonRabi => 'रब्बी';
+
+  @override
+  String get seasonZaid => 'उन्हाळी';
+
+  @override
+  String get farmLocationLabel => 'शेताचे ठिकाण';
+
+  @override
+  String get mapTapToMovePin =>
+      'पिन तुमच्या शेतावर हलवण्यासाठी नकाशावर टॅप करा';
+
+  @override
+  String get mandiAllTab => 'सर्व';
+
+  @override
+  String get mandiFavouritesTab => 'आवडते';
+
+  @override
+  String get noFavouritesMessage =>
+      'पिकाला आवडत्यांमध्ये जोडण्यासाठी तारा चिन्हावर टॅप करा.';
+
+  @override
+  String get addToFavourite => 'आवडत्यांमध्ये जोडा';
+
+  @override
+  String get removeFromFavourite => 'आवडत्यांमधून काढा';
+
+  @override
+  String get setPriceAlert => 'भाव सूचना सेट करा';
+
+  @override
+  String priceAlertDialogTitle(String commodity) {
+    return '$commodity साठी भाव सूचना';
+  }
+
+  @override
+  String get priceAlertTargetLabel => 'भाव इथे पोहोचल्यावर कळवा (₹)';
+
+  @override
+  String get priceAlertHelp =>
+      'तुम्ही नोंदवलेला किंवा लाइव्ह मंडी भाव या रकमेपर्यंत पोहोचल्यावर तुम्हाला सूचना मिळेल.';
+
+  @override
+  String get removeAlert => 'सूचना काढा';
+
+  @override
+  String priceAlertActiveLabel(String price) {
+    return '₹$price वर सूचना';
+  }
+
+  @override
+  String priceAlertNotificationTitle(String commodity) {
+    return '$commodity भाव सूचना';
+  }
+
+  @override
+  String priceAlertNotificationBody(String commodity, String price) {
+    return '$commodity ₹$price वर पोहोचला — तुमचा लक्ष्य भाव.';
+  }
+
+  @override
+  String get suggestedQuestionsLabel => 'सुचवलेले प्रश्न';
+
+  @override
+  String get suggestedQuestionPest => 'माझ्या पिकावर कोणती कीड पडली आहे?';
+
+  @override
+  String get suggestedQuestionFertilizer => 'आता कोणते खत वापरावे?';
+
+  @override
+  String get suggestedQuestionIrrigation => 'पुढचे पाणी कधी द्यावे?';
+
+  @override
+  String get suggestedQuestionWeather => 'आजचे हवामान फवारणीसाठी योग्य आहे का?';
+
+  @override
+  String get voiceInputTooltip => 'तुमचा प्रश्न बोला';
+
+  @override
+  String get voiceListeningLabel => 'ऐकत आहे…';
+
+  @override
+  String get voiceUnavailableMessage =>
+      'या फोनवर आवाज इनपुट उपलब्ध नाही. कृपया प्रश्न टाइप करा.';
+
+  @override
+  String get darkModeLabel => 'डार्क मोड';
+
+  @override
+  String get dailyReminderLabel => 'रोजच्या शेती नियोजनाची आठवण';
+
+  @override
+  String get dailyReminderSubtitle => 'दररोज सकाळी 8 वाजता';
+
+  @override
+  String get helpSupportTitle => 'मदत आणि सहाय्य';
+
+  @override
+  String get helpIntro => 'नेहमीच्या प्रश्नांची झटपट उत्तरे.';
+
+  @override
+  String get helpFaqOfflineQ => 'अ‍ॅप इंटरनेटशिवाय चालते का?';
+
+  @override
+  String get helpFaqOfflineA =>
+      'हो. कामे, खर्च, नोंदी आणि चेक-इन तुमच्या फोनवर जतन होतात. हवामान, लाइव्ह मंडी भाव आणि सहाय्यकासाठी इंटरनेट लागते.';
+
+  @override
+  String get helpFaqTasksQ => 'आजची कामे कुठून येतात?';
+
+  @override
+  String get helpFaqTasksA =>
+      'ती तुमच्या पिकावरून आणि पेरणीच्या तारखेवरून तयार होतात. प्रत्येक काम पूर्ण, वगळा किंवा आठवण करा म्हणून निवडा.';
+
+  @override
+  String get helpFaqLanguageQ => 'भाषा कशी बदलायची?';
+
+  @override
+  String get helpFaqLanguageA =>
+      'प्रोफाइल → भाषा मध्ये जाऊन English, हिंदी किंवा मराठी निवडा.';
+
+  @override
+  String get helpFaqDataQ => 'माझा शेतीचा डेटा सुरक्षित आहे का?';
+
+  @override
+  String get helpFaqDataA =>
+      'तुमचा डेटा तुमच्या फोनवरच राहतो. प्रोफाइल → खाते हटवा मधून तुम्ही तो कधीही काढू शकता.';
+
+  @override
+  String get deleteAccountTitle => 'खाते हटवा';
+
+  @override
+  String get deleteAccountConfirmMessage =>
+      'यामुळे तुमचे प्रोफाइल, शेते, पिके, कामे, खर्च आणि सर्व नोंदी या फोनवरून कायमच्या हटवल्या जातील. हे परत आणता येणार नाही.';
+
+  @override
+  String get deleteButton => 'हटवा';
 }

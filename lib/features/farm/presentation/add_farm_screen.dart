@@ -4,6 +4,7 @@ import 'package:location_picker_plus/location_picker_plus.dart' hide LocationSer
 
 import '../../../core/analytics/analytics_providers.dart';
 import '../../../core/location/location_service.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/error_messages.dart';
 import '../../../core/utils/error_reporter.dart';
 import '../../../core/utils/ids.dart';
@@ -11,6 +12,7 @@ import '../../../l10n/app_localizations.dart';
 import '../../auth/auth_providers.dart';
 import '../domain/farm.dart';
 import '../farm_providers.dart';
+import 'widgets/farm_location_map.dart';
 
 class AddFarmScreen extends ConsumerStatefulWidget {
   const AddFarmScreen({super.key});
@@ -173,6 +175,24 @@ class _AddFarmScreenState extends ConsumerState<AddFarmScreen> {
               icon: Icon(_latitude != null ? Icons.check_circle_outline : Icons.my_location_outlined),
               label: Text(t.useCurrentLocation),
             ),
+            if (_latitude != null && _longitude != null) ...[
+              const SizedBox(height: 12),
+              Text(t.farmLocationLabel, style: const TextStyle(fontWeight: FontWeight.w600)),
+              const SizedBox(height: 8),
+              FarmLocationMap(
+                latitude: _latitude!,
+                longitude: _longitude!,
+                onMoved: (lat, lng) => setState(() {
+                  _latitude = lat;
+                  _longitude = lng;
+                }),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                t.mapTapToMovePin,
+                style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
+              ),
+            ],
             const SizedBox(height: 32),
             ElevatedButton(
               onPressed: _saving ? null : _save,
