@@ -1,0 +1,254 @@
+{
+  "@@locale": "en",
+
+  "appName": "KisanMitra 360",
+
+  "chooseLanguage": "Choose your language",
+  "languageEnglish": "English",
+  "languageHindi": "हिंदी",
+  "languageMarathi": "मराठी",
+  "continueButton": "Continue",
+
+  "loginTitle": "Login",
+  "loginHeading": "Enter your mobile number",
+  "loginSubtitle": "We'll send you an OTP",
+  "phoneNumberLabel": "Mobile number",
+  "sendOtp": "Get OTP",
+  "otpTitle": "Verify OTP",
+  "otpSubtitle": "Enter the code sent to {phone}",
+  "@otpSubtitle": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+  "verifyOtp": "Verify",
+  "continueAsGuest": "Continue as Guest",
+  "resendOtp": "Resend OTP",
+
+  "profileSetupHeading": "Farmer Profile Setup",
+  "profileSetupTitle": "Tell us about yourself",
+  "nameLabel": "Your name",
+  "stateLabel": "State",
+  "districtLabel": "District",
+  "preferredLanguageLabel": "Preferred Language",
+  "saveAndContinue": "Save and Continue",
+  "nextButton": "Next",
+
+  "addFarmTitle": "Add your farm",
+  "farmNameLabel": "Farm name",
+  "villageLabel": "Village",
+  "areaLabel": "Area",
+  "areaUnitLabel": "Unit",
+  "soilTypeLabel": "Soil type",
+  "irrigationTypeLabel": "Irrigation type",
+
+  "addCropTitle": "Add crop season",
+  "cropLabel": "Crop",
+  "varietyLabel": "Variety (optional)",
+  "sowingDateLabel": "Sowing date",
+
+  "navHome": "Home",
+  "navFarm": "Farm",
+  "navMarket": "Market",
+  "navAssistant": "Assistant",
+  "navProfile": "Profile",
+
+  "goodMorning": "Good Morning",
+  "goodAfternoon": "Good Afternoon",
+  "goodEvening": "Good Evening",
+  "dayNumber": "Day {day}",
+  "@dayNumber": {
+    "placeholders": { "day": { "type": "int" } }
+  },
+
+  "todaysTasks": "Today's Tasks",
+  "weather": "Weather",
+  "irrigation": "Irrigation",
+  "cropHealth": "Crop Health",
+  "myFarm": "My Farm",
+  "expenses": "Expenses",
+  "mandi": "Mandi",
+  "askKisanMitra": "Ask KisanMitra",
+  "dailyTip": "Today's Tip",
+
+  "addFarm": "Add Farm",
+  "addExpense": "Add Expense",
+
+  "settingsTitle": "Settings",
+  "languageSettingTitle": "Language",
+  "aboutTitle": "About",
+  "privacyTitle": "Privacy",
+  "logout": "Log out",
+
+  "offlineBanner": "You're offline. Showing saved information.",
+  "genericErrorMessage": "Unable to update right now. Your data is safely saved and will sync when internet is available.",
+  "comingSoon": "Coming soon",
+
+  "howIsYourCropToday": "How is your crop today?",
+  "healthGood": "Good",
+  "healthNeedsAttention": "Needs Attention",
+  "healthCritical": "Problem",
+
+  "done": "Done",
+  "remindMe": "Remind Me",
+  "skip": "Skip",
+  "save": "Save",
+  "cancel": "Cancel",
+
+  "tasksPendingLabel": "{count} pending",
+  "@tasksPendingLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "allTasksDoneMessage": "Today's farm work completed",
+  "noCropYetMessage": "Add a crop to see today's farm plan",
+  "taskStatusDone": "Done",
+  "taskStatusSkipped": "Skipped",
+  "taskStatusSnoozed": "Reminded for tomorrow",
+
+  "amountLabel": "Amount",
+  "categoryLabel": "Category",
+  "dateLabel": "Date",
+  "notesLabel": "Notes (optional)",
+  "seasonExpenseLabel": "Season Expense",
+  "noExpensesMessage": "No expenses logged yet",
+  "addReceiptPhoto": "Add receipt photo",
+
+  "expenseCategorySeeds": "Seeds",
+  "expenseCategoryFertilizer": "Fertilizer",
+  "expenseCategoryPesticide": "Pesticide",
+  "expenseCategoryLabour": "Labour",
+  "expenseCategoryTractor": "Tractor",
+  "expenseCategoryDiesel": "Diesel",
+  "expenseCategoryIrrigation": "Irrigation",
+  "expenseCategoryElectricity": "Electricity",
+  "expenseCategoryTransport": "Transport",
+  "expenseCategoryEquipment": "Equipment",
+  "expenseCategoryOther": "Other",
+
+  "irrigationTitle": "Irrigation",
+  "logIrrigation": "Log Irrigation",
+  "durationMinutesLabel": "Duration (minutes)",
+  "methodLabel": "Method",
+  "noIrrigationMessage": "No irrigation logged yet",
+  "lastIrrigationLabel": "Last irrigation: {daysAgo, plural, =0{today} =1{1 day ago} other{{daysAgo} days ago}}",
+  "@lastIrrigationLabel": {
+    "placeholders": { "daysAgo": { "type": "int" } }
+  },
+
+  "fertilizerTitle": "Fertilizer",
+  "logFertilizer": "Log Fertilizer",
+  "productLabel": "Product",
+  "quantityLabel": "Quantity",
+  "unitLabel": "Unit",
+  "costLabel": "Cost (optional)",
+  "noFertilizerMessage": "No fertilizer logged yet",
+
+  "sprayTitle": "Spray",
+  "logSpray": "Log Spray",
+  "doseLabel": "Dose",
+  "reasonLabel": "Reason",
+  "noSprayMessage": "No spray logged yet",
+
+  "weatherTitle": "Weather",
+  "rainProbabilityLabel": "Rain chance",
+  "humidityLabel": "Humidity",
+  "windLabel": "Wind",
+  "lastUpdatedLabel": "Last updated: {time}",
+  "@lastUpdatedLabel": {
+    "placeholders": { "time": { "type": "String" } }
+  },
+  "weatherUnavailableMessage": "Weather isn't available right now.",
+  "addFarmLocationMessage": "Add your farm's location to see weather",
+  "useCurrentLocation": "Use current location",
+  "avoidSprayingAdvice": "Rain expected — avoid spraying today.",
+  "irrigationNotNeededAdvice": "Rain expected — irrigation may not be needed.",
+  "checkDrainageAdvice": "Heavy rain expected — check field drainage.",
+  "goodSprayingConditionsAdvice": "No rain expected — safe to spray today.",
+  "hotDayAdvice": "Hot day — irrigate during cooler hours if needed.",
+
+  "addMandiPrice": "Add Price",
+  "commodityLabel": "Commodity",
+  "marketLabel": "Market (optional)",
+  "priceLabel": "Price",
+  "noMandiPricesMessage": "No prices logged yet. Add prices you see at the mandi to track trends over time.",
+  "mandiManualTrackingNote": "Live mandi feeds aren't connected yet — track prices you observe manually.",
+  "previousPriceLabel": "Previous: ₹{price}",
+  "@previousPriceLabel": {
+    "placeholders": { "price": { "type": "String" } }
+  },
+
+  "aiAssistantHint": "Ask a question about your farm",
+  "aiAssistantSend": "Send",
+  "aiNotConfiguredMessage": "The AI assistant needs a Firebase Cloud Function to answer safely — this will connect once that's set up. For now, your question is saved so you don't lose it.",
+
+  "checkInTitle": "Daily Check-in",
+  "checkInPromptGood": "Good",
+  "checkInPromptAttention": "Needs Attention",
+  "checkInPromptProblem": "Problem",
+  "checkInWhatDidYouNotice": "What did you notice?",
+  "concernPest": "Pest",
+  "concernLeafChange": "Leaf change",
+  "concernWaterStress": "Water stress",
+  "concernDisease": "Disease",
+  "concernOther": "Other",
+  "addPhoto": "Add Photo",
+  "addNote": "Add Note",
+  "checkInSavedMessage": "Check-in saved",
+  "alreadyCheckedInMessage": "You've already checked in today",
+  "changeCheckIn": "Change",
+
+  "syncStatusTitle": "Sync status",
+  "syncPendingLabel": "{count, plural, =0{Nothing waiting} =1{1 record waiting to sync} other{{count} records waiting to sync}}",
+  "@syncPendingLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "syncNotConnectedMessage": "Your data is safely saved on this device. Online sync isn't connected yet.",
+  "orDivider": "or",
+
+  "dashboardTagline": "Keep farming, keep growing!",
+  "rainAlertTitle": "Rain Alert",
+  "activeCropLabel": "Active Crop",
+  "tasksCountLabel": "{count, plural, =1{1 task} other{{count} tasks}}",
+  "@tasksCountLabel": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "irrigationNormalStatus": "Normal",
+  "irrigationDueStatus": "Due",
+  "noDataDash": "—",
+  "countryLabel": "Country",
+  "invalidPhoneNumberMessage": "Enter a valid 10-digit mobile number",
+
+  "weatherConditionClear": "Clear",
+  "weatherConditionCloudy": "Cloudy",
+  "weatherConditionFog": "Foggy",
+  "weatherConditionRain": "Rainy",
+  "weatherConditionStorm": "Thunderstorm",
+  "weatherConditionSnow": "Snowy",
+
+  "liveMandiPricesTitle": "Live Mandi Prices",
+  "liveMandiSourceLabel": "Source: Agmarknet (data.gov.in)",
+  "modalPriceLabel": "Modal: ₹{price}",
+  "@modalPriceLabel": {
+    "placeholders": { "price": { "type": "String" } }
+  },
+  "yourTrackedPricesLabel": "Your Tracked Prices",
+  "perQuintalLabel": "per quintal",
+
+  "lastIrrigationTitle": "Last Irrigation",
+  "suggestedNextIrrigationTitle": "Suggested Next Irrigation",
+  "irrigationHistoryNeededMessage": "Log a couple more irrigations to see a suggested schedule",
+  "irrigationHistoryTitle": "Irrigation History",
+  "daysAgoLabel": "{days, plural, =0{Today} =1{1 day ago} other{{days} days ago}}",
+  "@daysAgoLabel": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "inDaysLabel": "{days, plural, =0{Today} =1{Tomorrow} other{In {days} days}}",
+  "@inDaysLabel": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "minutesUnitLabel": "min",
+  "checkInNoteHint": "Enter your note...",
+
+  "totalCropExpenseLabel": "Total Crop Expense",
+  "thisMonthLabel": "This Month",
+  "thisSeasonLabel": "This Season",
+  "recentExpensesLabel": "Recent Expenses"
+}
