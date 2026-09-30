@@ -1,0 +1,36 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "hosting": [
+    {
+      "target": "kisanmitra360",
+      "public": "hosting",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": []
+    },
+    {
+      "target": "kisanmitra-11664",
+      "public": "hosting-redirect",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "redirects": [
+        {
+          "source": "/**",
+          "destination": "https://kisanmitra360.web.app",
+          "type": 301
+        }
+      ]
+    }
+  ]
+}

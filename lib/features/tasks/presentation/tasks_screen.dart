@@ -75,7 +75,7 @@ class _TaskCard extends ConsumerWidget {
     final t = AppLocalizations.of(context)!;
     final repo = ref.read(taskRepositoryProvider);
     final analytics = ref.read(analyticsServiceProvider);
-    final isResolved = task.state != FarmTaskState.pending;
+    final isResolved = !task.isActionableOn(DateTime.now());
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),

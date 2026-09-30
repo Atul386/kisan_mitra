@@ -1,8 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Local task/irrigation reminders (blueprint §28) -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <!-- Farm location (§39) -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -13,7 +11,7 @@
     <!-- Voice questions to the AI assistant (speech_to_text) -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
-        android:label="kisan_mitra"
+        android:label="Kisan Mitra"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -43,6 +41,17 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- flutter_local_notifications: needed for scheduled reminders to fire
+             and to be restored after a reboot or app update. -->
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
@@ -56,6 +65,15 @@
         </intent>
         <intent>
             <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <!-- url_launcher: open official government links, dial helplines, open Maps. -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL"/>
+            <data android:scheme="tel"/>
         </intent>
     </queries>
 </manifest>

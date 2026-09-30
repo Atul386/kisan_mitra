@@ -1,15 +1,17 @@
 flutter_launcher_icons:
-  image_path: "assets/icons/app_icon.png"
+  # Generated from assets/icons/icon.png: the logo cut out of its white
+  # tile/shadow and centred on the tile colour (#FAFAF4).
+  image_path: "assets/icons/launcher_icon.png"
   android: true
-  adaptive_icon_background: "#1B5E20"
-  adaptive_icon_foreground: "assets/icons/app_icon_foreground.png"
+  adaptive_icon_background: "#FAFAF4"
+  adaptive_icon_foreground: "assets/icons/launcher_icon_foreground.png"
   ios: true
   remove_alpha_ios: true
   macos:
     generate: true
   web:
     generate: true
-    background_color: "#1B5E20"
+    background_color: "#FAFAF4"
     theme_color: "#1B5E20"
   windows:
     generate: true

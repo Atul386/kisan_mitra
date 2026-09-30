@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/analytics/analytics_providers.dart';
+import '../../../core/config/feature_flags.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/error_messages.dart';
 import '../../../core/utils/error_reporter.dart';
@@ -43,7 +44,7 @@ class _DailyCheckinScreenState extends ConsumerState<DailyCheckinScreen> {
 
     setState(() => _saving = true);
     try {
-      final season = ref.read(primaryActiveSeasonProvider).value;
+      final season = ref.read(primaryActiveSeasonProvider).valueOrNull;
       await ref.read(checkinRepositoryProvider).saveCheckin(
             DailyCheckin(
               id: newId(),
@@ -90,7 +91,7 @@ class _DailyCheckinScreenState extends ConsumerState<DailyCheckinScreen> {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     final checkinAsync = ref.watch(todayCheckinProvider);
-    final season = ref.watch(primaryActiveSeasonProvider).value;
+    final season = ref.watch(primaryActiveSeasonProvider).valueOrNull;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -188,7 +189,7 @@ class _DailyCheckinScreenState extends ConsumerState<DailyCheckinScreen> {
           label: t.addPhoto,
           onTap: _addPhoto,
         ),
-        if (_health == CheckinHealth.problem) ...[
+        if (kAiAssistantEnabled && _health == CheckinHealth.problem) ...[
           const SizedBox(height: 10),
           _ActionRow(
             icon: Icons.mic_none_rounded,

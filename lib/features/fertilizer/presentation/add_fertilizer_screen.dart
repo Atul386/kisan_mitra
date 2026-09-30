@@ -50,7 +50,7 @@ class _AddFertilizerScreenState extends ConsumerState<AddFertilizerScreen> {
     if (farm == null || _productController.text.trim().isEmpty) return;
     setState(() => _saving = true);
     try {
-      final season = ref.read(primaryActiveSeasonProvider).value;
+      final season = ref.read(primaryActiveSeasonProvider).valueOrNull;
       await ref.read(fertilizerRepositoryProvider).addLog(
             FertilizerLogEntry(
               id: newId(),

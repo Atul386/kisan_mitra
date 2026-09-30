@@ -13,7 +13,7 @@ final irrigationRepositoryProvider = Provider<IrrigationRepository>((ref) {
 
 final seasonIrrigationLogsProvider = StreamProvider<List<IrrigationLogEntry>>((ref) {
   final farm = ref.watch(primaryFarmProvider);
-  final season = ref.watch(primaryActiveSeasonProvider).value;
+  final season = ref.watch(primaryActiveSeasonProvider).valueOrNull;
   if (farm == null) return const Stream.empty();
   return ref
       .watch(irrigationRepositoryProvider)
@@ -23,7 +23,7 @@ final seasonIrrigationLogsProvider = StreamProvider<List<IrrigationLogEntry>>((r
 /// Days since the most recent irrigation, for the dashboard summary card
 /// (blueprint §18). Null when nothing has been logged yet.
 final daysSinceLastIrrigationProvider = Provider<int?>((ref) {
-  final logs = ref.watch(seasonIrrigationLogsProvider).value ?? const [];
+  final logs = ref.watch(seasonIrrigationLogsProvider).valueOrNull ?? const [];
   if (logs.isEmpty) return null;
   final last = logs.first.date;
   return DateTime.now().difference(DateTime(last.year, last.month, last.day)).inDays;
@@ -34,7 +34,7 @@ final daysSinceLastIrrigationProvider = Provider<int?>((ref) {
 /// recommendation, since we have no soil-moisture or crop-stage data to
 /// base one on. Null until at least 2 irrigations are logged.
 final suggestedNextIrrigationProvider = Provider<DateTime?>((ref) {
-  final logs = ref.watch(seasonIrrigationLogsProvider).value ?? const [];
+  final logs = ref.watch(seasonIrrigationLogsProvider).valueOrNull ?? const [];
   if (logs.length < 2) return null;
 
   final sorted = [...logs]..sort((a, b) => b.date.compareTo(a.date));

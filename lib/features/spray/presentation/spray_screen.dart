@@ -12,7 +12,7 @@ class SprayScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = AppLocalizations.of(context)!;
-    final logs = ref.watch(seasonSprayLogsProvider).value ?? const [];
+    final logs = ref.watch(seasonSprayLogsProvider).valueOrNull ?? const [];
 
     return Scaffold(
       appBar: AppBar(title: Text(t.sprayTitle)),

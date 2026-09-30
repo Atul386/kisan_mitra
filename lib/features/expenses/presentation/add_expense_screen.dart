@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/analytics/analytics_providers.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/error_messages.dart';
 import '../../../core/utils/error_reporter.dart';
 import '../../../core/utils/ids.dart';
+import '../../../core/utils/photo_storage.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../dashboard/dashboard_providers.dart';
 import '../domain/expense.dart';
@@ -22,6 +25,7 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
   final _notesController = TextEditingController();
   ExpenseCategory _category = ExpenseCategory.seeds;
   DateTime _date = DateTime.now();
+  String? _receiptPhotoPath;
   bool _saving = false;
 
   @override
@@ -58,6 +62,13 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
     }
   }
 
+  Future<void> _addReceiptPhoto() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.camera, imageQuality: 70, maxWidth: 1280);
+    if (picked == null) return;
+    final path = await saveImageLocally(picked, category: 'receipt_photos');
+    setState(() => _receiptPhotoPath = path);
+  }
+
   Future<void> _pickDate() async {
     final picked = await showDatePicker(
       context: context,
@@ -75,7 +86,7 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
 
     setState(() => _saving = true);
     try {
-      final season = ref.read(primaryActiveSeasonProvider).value;
+      final season = ref.read(primaryActiveSeasonProvider).valueOrNull;
       await ref.read(expenseRepositoryProvider).addExpense(
             Expense(
               id: newId(),
@@ -85,6 +96,7 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
               category: _category,
               date: _date,
               notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
+              receiptPhotoPath: _receiptPhotoPath,
             ),
           );
       ref.read(analyticsServiceProvider).logEvent('expense_added', parameters: {'category': _category.name});
@@ -137,6 +149,34 @@ class _AddExpenseScreenState extends ConsumerState<AddExpenseScreen> {
               controller: _notesController,
               decoration: InputDecoration(labelText: t.notesLabel),
               maxLines: 2,
+            ),
+            const SizedBox(height: 16),
+            Material(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(14),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(14),
+                onTap: _addReceiptPhoto,
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: AppColors.border),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        _receiptPhotoPath != null ? Icons.check_circle_rounded : Icons.camera_alt_outlined,
+                        color: _receiptPhotoPath != null ? AppColors.primary : AppColors.textSecondary,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 12),
+                      Text(t.addReceiptPhoto, style: const TextStyle(fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 32),
             ElevatedButton(

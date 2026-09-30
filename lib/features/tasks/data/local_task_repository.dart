@@ -42,6 +42,14 @@ class LocalTaskRepository implements TaskRepository {
 
     final now = DateTime.now();
     for (final template in templates) {
+      // A task the farmer asked to be reminded about carries over to the
+      // next day; don't add a second copy of the same template alongside it.
+      final snoozedCopy = await (_db.select(_db.farmTasks)
+            ..where((t) => t.id.like('$seasonId::${template.id}::%') & t.state.equals('snoozed'))
+            ..limit(1))
+          .getSingleOrNull();
+      if (snoozedCopy != null) continue;
+
       final id = '$seasonId::${template.id}::${today.toIso8601String().split('T').first}';
       final inserted = await _db.into(_db.farmTasks).insertReturningOrNull(
             FarmTasksCompanion.insert(
@@ -106,6 +114,8 @@ class LocalTaskRepository implements TaskRepository {
   }
 
   Future<void> _setState(String taskId, FarmTaskState state) async {
+    // Done / Skip after "Remind Me" — drop the reminder that's still queued.
+    await _notifications?.cancel(notificationIdFor(taskId));
     await (_db.update(_db.farmTasks)..where((t) => t.id.equals(taskId))).write(
       FarmTasksCompanion(
         state: Value(state.name),

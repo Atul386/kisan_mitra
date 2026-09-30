@@ -13,7 +13,7 @@ final sprayRepositoryProvider = Provider<SprayRepository>((ref) {
 
 final seasonSprayLogsProvider = StreamProvider<List<SprayLogEntry>>((ref) {
   final farm = ref.watch(primaryFarmProvider);
-  final season = ref.watch(primaryActiveSeasonProvider).value;
+  final season = ref.watch(primaryActiveSeasonProvider).valueOrNull;
   if (farm == null) return const Stream.empty();
   return ref.watch(sprayRepositoryProvider).watchLogs(farmId: farm.id, seasonId: season?.id);
 });

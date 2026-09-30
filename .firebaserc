@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "kisanmitra-11664"
+  },
+  "targets": {
+    "kisanmitra-11664": {
+      "hosting": {
+        "kisanmitra360": [
+          "kisanmitra360"
+        ],
+        "kisanmitra-11664": [
+          "kisanmitra-11664"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

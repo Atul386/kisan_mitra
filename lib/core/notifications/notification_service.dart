@@ -26,11 +26,7 @@ class NotificationService {
     const iosSettings = DarwinInitializationSettings();
     const macosSettings = DarwinInitializationSettings();
     await _plugin.initialize(
-      settings: const InitializationSettings(
-        android: androidSettings,
-        iOS: iosSettings,
-        macOS: macosSettings,
-      ),
+      settings: const InitializationSettings(android: androidSettings, iOS: iosSettings, macOS: macosSettings),
     );
     _initialized = true;
   }
@@ -48,13 +44,19 @@ class NotificationService {
     return androidGranted ?? iosGranted ?? macGranted ?? true;
   }
 
+  /// Schedules a notification at [at]. With [repeat] it recurs on the same
+  /// time of day (`time`), weekday (`dayOfWeekAndTime`) or day of month
+  /// (`dayOfMonthAndTime`). A one-off time already in the past is skipped
+  /// (the plugin rejects it).
   Future<void> scheduleOneOff({
     required int id,
     required String title,
     required String body,
     required DateTime at,
+    DateTimeComponents? repeat,
   }) async {
     await init();
+    if (repeat == null && !at.isAfter(DateTime.now())) return;
     await _plugin.zonedSchedule(
       id: id,
       title: title,
@@ -71,7 +73,8 @@ class NotificationService {
         iOS: DarwinNotificationDetails(),
         macOS: DarwinNotificationDetails(),
       ),
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      matchDateTimeComponents: repeat,
     );
   }
 
@@ -104,7 +107,7 @@ class NotificationService {
         iOS: DarwinNotificationDetails(),
         macOS: DarwinNotificationDetails(),
       ),
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
@@ -137,14 +140,6 @@ class NotificationService {
 
 extension on tz.TZDateTime {
   tz.TZDateTime copyWith({int? hour, int? minute, int? second}) {
-    return tz.TZDateTime(
-      location,
-      year,
-      month,
-      day,
-      hour ?? this.hour,
-      minute ?? this.minute,
-      second ?? this.second,
-    );
+    return tz.TZDateTime(location, year, month, day, hour ?? this.hour, minute ?? this.minute, second ?? this.second);
   }
 }

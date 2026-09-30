@@ -50,13 +50,30 @@ app.*.map.json
 
 # Firebase config — contains project keys; kept local only.
 # Copy the *.example files and fill them in (see README).
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-macos/Runner/GoogleService-Info.plist
+# (Patterns match in any folder, so a misplaced copy can't be committed.)
+**/google-services.json
+**/GoogleService-Info.plist
 lib/firebase_options.dart
+
+# Firebase CLI local cache (firebase.json, .firebaserc and the rules files
+# ARE committed; this folder is only a deploy cache).
+.firebase/
 
 # Local secrets
 .env
+.env.*
+!.env.example
 *.jks
 *.keystore
 key.properties
+# Build-time defines, e.g. `flutter run --dart-define-from-file=dart_defines.json`
+dart_defines*.json
+!dart_defines.example.json
+
+# Local databases / dumps from running the app on a desktop or emulator
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Test output: golden-image comparison failures are regenerated on every run
+test/**/failures/

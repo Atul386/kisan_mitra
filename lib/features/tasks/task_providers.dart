@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/database/database_providers.dart';
 import '../../core/notifications/notification_providers.dart';
 import '../../core/sync/sync_providers.dart';
+import '../../core/utils/today_provider.dart';
 import '../dashboard/dashboard_providers.dart';
 import 'data/local_task_repository.dart';
 import 'domain/farm_task.dart';
@@ -20,7 +21,8 @@ final taskRepositoryProvider = Provider<TaskRepository>((ref) {
 /// and idempotent (insertOrIgnore), so it's safe to watch from any screen
 /// that needs today's tasks to already exist.
 final ensureTodaysTasksProvider = FutureProvider<void>((ref) async {
-  final season = ref.watch(primaryActiveSeasonProvider).value;
+  ref.watch(todayProvider);
+  final season = ref.watch(primaryActiveSeasonProvider).valueOrNull;
   if (season == null) return;
   await ref.watch(taskRepositoryProvider).ensureTodaysTasksGenerated(
         seasonId: season.id,
@@ -31,12 +33,14 @@ final ensureTodaysTasksProvider = FutureProvider<void>((ref) async {
 
 final todaysTasksProvider = StreamProvider<List<FarmTaskEntity>>((ref) {
   ref.watch(ensureTodaysTasksProvider);
-  final season = ref.watch(primaryActiveSeasonProvider).value;
+  ref.watch(todayProvider);
+  final season = ref.watch(primaryActiveSeasonProvider).valueOrNull;
   if (season == null) return const Stream.empty();
   return ref.watch(taskRepositoryProvider).watchTodaysTasks(season.id);
 });
 
 final pendingTaskCountProvider = Provider<int>((ref) {
-  final tasks = ref.watch(todaysTasksProvider).value ?? const [];
-  return tasks.where((t) => t.state == FarmTaskState.pending).length;
+  final tasks = ref.watch(todaysTasksProvider).valueOrNull ?? const [];
+  final today = ref.watch(todayProvider);
+  return tasks.where((t) => t.isActionableOn(today)).length;
 });

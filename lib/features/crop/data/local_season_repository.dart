@@ -25,6 +25,20 @@ class LocalSeasonRepository implements SeasonRepository {
   }
 
   @override
+  Stream<List<domain.Season>> watchSeasons(String farmId) {
+    final query = _db.select(_db.seasons)
+      ..where((s) => s.farmId.equals(farmId) & s.deletedAt.isNull())
+      ..orderBy([(s) => OrderingTerm.desc(s.sowingDate)]);
+    return query.watch().map((rows) => rows.map(_toDomain).toList());
+  }
+
+  @override
+  Stream<domain.Season?> watchSeason(String seasonId) {
+    final query = _db.select(_db.seasons)..where((s) => s.id.equals(seasonId) & s.deletedAt.isNull());
+    return query.watchSingleOrNull().map((row) => row == null ? null : _toDomain(row));
+  }
+
+  @override
   Future<void> addSeason(domain.Season season) async {
     final now = DateTime.now();
     final id = season.id.isEmpty ? newId() : season.id;
@@ -40,6 +54,8 @@ class LocalSeasonRepository implements SeasonRepository {
             areaUnit: Value(season.areaUnit),
             seasonName: Value(season.seasonName),
             status: Value(season.status),
+            expectedHarvestDate: Value(season.expectedHarvestDate),
+            notes: Value(season.notes),
             createdAt: now,
             updatedAt: now,
           ),
@@ -59,6 +75,38 @@ class LocalSeasonRepository implements SeasonRepository {
     await _syncQueue.enqueue(table: _table, entityId: seasonId, operation: 'update');
   }
 
+  @override
+  Future<void> updateDetails(
+    String seasonId, {
+    String? variety,
+    double? area,
+    DateTime? expectedHarvestDate,
+    String? notes,
+  }) async {
+    await (_db.update(_db.seasons)..where((s) => s.id.equals(seasonId))).write(
+      SeasonsCompanion(
+        variety: Value(variety),
+        area: Value(area),
+        expectedHarvestDate: Value(expectedHarvestDate),
+        notes: Value(notes),
+        updatedAt: Value(DateTime.now()),
+        syncStatus: const Value(SyncStatus.pendingUpdate),
+      ),
+    );
+    await _syncQueue.enqueue(table: _table, entityId: seasonId, operation: 'update');
+  }
+
+  @override
+  Future<void> deleteSeason(String seasonId) async {
+    await (_db.update(_db.seasons)..where((s) => s.id.equals(seasonId))).write(
+      SeasonsCompanion(
+        deletedAt: Value(DateTime.now()),
+        syncStatus: const Value(SyncStatus.pendingDelete),
+      ),
+    );
+    await _syncQueue.enqueue(table: _table, entityId: seasonId, operation: 'delete');
+  }
+
   domain.Season _toDomain(Season row) => domain.Season(
         id: row.id,
         farmId: row.farmId,
@@ -70,5 +118,7 @@ class LocalSeasonRepository implements SeasonRepository {
         areaUnit: row.areaUnit,
         seasonName: row.seasonName,
         status: row.status,
+        expectedHarvestDate: row.expectedHarvestDate,
+        notes: row.notes,
       );
 }

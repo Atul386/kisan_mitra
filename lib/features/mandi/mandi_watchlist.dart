@@ -93,11 +93,11 @@ final mandiPriceAlertCheckerProvider = FutureProvider<void>((ref) async {
   for (final trend in ref.watch(mandiTrendsProvider)) {
     consider(trend.latest.commodity, trend.latest.price);
   }
-  for (final live in ref.watch(liveMandiPricesProvider).value ?? const []) {
+  for (final live in ref.watch(liveMandiPricesProvider).valueOrNull ?? const []) {
     consider(live.commodity, live.modalPrice);
   }
 
-  final t = lookupAppLocalizations(ref.read(localeControllerProvider).value ?? const Locale('en'));
+  final t = lookupAppLocalizations(ref.read(localeControllerProvider).valueOrNull ?? const Locale('en'));
   final notifications = ref.read(notificationServiceProvider);
   final watchlist = ref.read(mandiWatchlistProvider.notifier);
 

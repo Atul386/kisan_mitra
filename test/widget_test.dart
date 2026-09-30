@@ -4,7 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:kisan_mitra/app/app.dart';
 import 'package:kisan_mitra/app/router.dart';
+import 'package:kisan_mitra/core/config/feature_flags.dart';
 import 'package:kisan_mitra/core/utils/shared_preferences_provider.dart';
+import 'package:kisan_mitra/features/onboarding/presentation/splash_screen.dart';
 
 void main() {
   testWidgets('App boots to the expected first screen', (tester) async {
@@ -25,6 +27,11 @@ void main() {
     // whichever behavior is currently active rather than fighting it.
     if (kSkipOnboardingForDev) {
       expect(find.text('KisanMitra 360'), findsOneWidget);
+    } else if (kEnglishOnly) {
+      // English-only release: the language picker is skipped, so a first
+      // launch waits on the splash while the local guest account is created.
+      expect(find.text('Choose your language'), findsNothing);
+      expect(find.byType(SplashScreen), findsOneWidget);
     } else {
       expect(find.text('Choose your language'), findsOneWidget);
     }

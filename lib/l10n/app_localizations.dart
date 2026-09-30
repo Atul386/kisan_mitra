@@ -985,7 +985,7 @@ abstract class AppLocalizations {
   /// No description provided for @addPhoto.
   ///
   /// In en, this message translates to:
-  /// **'Add Photo'**
+  /// **'Add photo'**
   String get addPhoto;
 
   /// No description provided for @addNote.
@@ -1039,7 +1039,7 @@ abstract class AppLocalizations {
   /// No description provided for @dashboardTagline.
   ///
   /// In en, this message translates to:
-  /// **'Keep farming, keep growing!'**
+  /// **'Your farm, your companion'**
   String get dashboardTagline;
 
   /// No description provided for @rainAlertTitle.
@@ -1135,7 +1135,7 @@ abstract class AppLocalizations {
   /// No description provided for @liveMandiSourceLabel.
   ///
   /// In en, this message translates to:
-  /// **'Source: Agmarknet (data.gov.in)'**
+  /// **'Source: Mandi Price API (data.gov.in)'**
   String get liveMandiSourceLabel;
 
   /// No description provided for @modalPriceLabel.
@@ -1465,7 +1465,7 @@ abstract class AppLocalizations {
   /// No description provided for @helpFaqDataA.
   ///
   /// In en, this message translates to:
-  /// **'Your data stays on your phone. You can delete it any time from Profile → Delete account.'**
+  /// **'Your data stays on your phone. You can delete it any time from Profile → Reset app data.'**
   String get helpFaqDataA;
 
   /// No description provided for @deleteAccountTitle.
@@ -1485,6 +1485,1914 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete'**
   String get deleteButton;
+
+  /// No description provided for @resetAppDataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset app data'**
+  String get resetAppDataTitle;
+
+  /// No description provided for @resetAppDataMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes your profile, farms, crops, tasks, expenses and all logs from this phone, and starts the app fresh. This can\'t be undone.'**
+  String get resetAppDataMessage;
+
+  /// No description provided for @sevenDayForecastTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'7-Day Forecast'**
+  String get sevenDayForecastTitle;
+
+  /// No description provided for @forecastTodayLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get forecastTodayLabel;
+
+  /// No description provided for @requiredFieldError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill this in'**
+  String get requiredFieldError;
+
+  /// No description provided for @invalidAreaError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the area as a number, e.g. 2.5'**
+  String get invalidAreaError;
+
+  /// No description provided for @hourlyForecastTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Next 24 hours'**
+  String get hourlyForecastTitle;
+
+  /// No description provided for @feelsLikeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Feels like {temp}°'**
+  String feelsLikeLabel(String temp);
+
+  /// No description provided for @weatherDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get weatherDetailsTitle;
+
+  /// No description provided for @uvIndexLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'UV index'**
+  String get uvIndexLabel;
+
+  /// No description provided for @sunriseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get sunriseLabel;
+
+  /// No description provided for @sunsetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunset'**
+  String get sunsetLabel;
+
+  /// No description provided for @farmAdviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm advice'**
+  String get farmAdviceTitle;
+
+  /// No description provided for @weatherDemoBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Demo data'**
+  String get weatherDemoBadge;
+
+  /// No description provided for @weatherNoAdvice.
+  ///
+  /// In en, this message translates to:
+  /// **'No special precautions today — a normal farm day.'**
+  String get weatherNoAdvice;
+
+  /// No description provided for @highLowLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'H {high}°  L {low}°'**
+  String highLowLabel(String high, String low);
+
+  /// No description provided for @quickActionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick actions'**
+  String get quickActionsTitle;
+
+  /// No description provided for @qaSpray.
+  ///
+  /// In en, this message translates to:
+  /// **'Log spray'**
+  String get qaSpray;
+
+  /// No description provided for @qaExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Add expense'**
+  String get qaExpense;
+
+  /// No description provided for @qaFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer'**
+  String get qaFertilizer;
+
+  /// No description provided for @qaIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation'**
+  String get qaIrrigation;
+
+  /// No description provided for @qaCropCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop check'**
+  String get qaCropCheck;
+
+  /// No description provided for @farmSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your farm at a glance'**
+  String get farmSummaryTitle;
+
+  /// No description provided for @summaryArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get summaryArea;
+
+  /// No description provided for @summaryExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get summaryExpenses;
+
+  /// No description provided for @summaryCropDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {day} of about {total}'**
+  String summaryCropDay(int day, int total);
+
+  /// No description provided for @summaryNoCrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a crop to track its progress'**
+  String get summaryNoCrop;
+
+  /// No description provided for @summaryNotSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get summaryNotSet;
+
+  /// No description provided for @mandiTickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi prices today'**
+  String get mandiTickerTitle;
+
+  /// No description provided for @mandiSampleCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample prices'**
+  String get mandiSampleCaption;
+
+  /// No description provided for @mandiPerQuintal.
+  ///
+  /// In en, this message translates to:
+  /// **'per quintal'**
+  String get mandiPerQuintal;
+
+  /// No description provided for @schemesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Schemes for farmers'**
+  String get schemesTitle;
+
+  /// No description provided for @schemesSampleCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample information'**
+  String get schemesSampleCaption;
+
+  /// No description provided for @schemePmKisanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PM-Kisan'**
+  String get schemePmKisanTitle;
+
+  /// No description provided for @schemePmKisanDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'₹6,000 a year in three instalments, straight to your bank account.'**
+  String get schemePmKisanDesc;
+
+  /// No description provided for @schemePmfbyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop insurance (PMFBY)'**
+  String get schemePmfbyTitle;
+
+  /// No description provided for @schemePmfbyDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Insure your crop against drought, flood and pests at a low premium.'**
+  String get schemePmfbyDesc;
+
+  /// No description provided for @schemeKccTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Kisan Credit Card'**
+  String get schemeKccTitle;
+
+  /// No description provided for @schemeKccDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Low-interest farm loans for seeds, fertilizer and equipment.'**
+  String get schemeKccDesc;
+
+  /// No description provided for @dailyTipTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip of the day'**
+  String get dailyTipTitle;
+
+  /// No description provided for @dailyTipBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Water early in the morning. Less water is lost to the sun and leaves dry before night, which lowers disease.'**
+  String get dailyTipBody;
+
+  /// No description provided for @navAdvisories.
+  ///
+  /// In en, this message translates to:
+  /// **'Advisories'**
+  String get navAdvisories;
+
+  /// No description provided for @navMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get navMore;
+
+  /// No description provided for @advisoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advisories'**
+  String get advisoriesTitle;
+
+  /// No description provided for @advWeather.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather'**
+  String get advWeather;
+
+  /// No description provided for @advWeatherDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Forecast and farm advice'**
+  String get advWeatherDesc;
+
+  /// No description provided for @advCropAdvisories.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop advisories'**
+  String get advCropAdvisories;
+
+  /// No description provided for @advCropAdvisoriesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop guide and official advisories'**
+  String get advCropAdvisoriesDesc;
+
+  /// No description provided for @advSchemes.
+  ///
+  /// In en, this message translates to:
+  /// **'Government schemes'**
+  String get advSchemes;
+
+  /// No description provided for @advSchemesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Schemes that may help your farm'**
+  String get advSchemesDesc;
+
+  /// No description provided for @advInsurance.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop insurance'**
+  String get advInsurance;
+
+  /// No description provided for @advInsuranceDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'PMFBY information and official services'**
+  String get advInsuranceDesc;
+
+  /// No description provided for @advPmKisan.
+  ///
+  /// In en, this message translates to:
+  /// **'PM-KISAN'**
+  String get advPmKisan;
+
+  /// No description provided for @advPmKisanDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration, e-KYC and payment status'**
+  String get advPmKisanDesc;
+
+  /// No description provided for @officialDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'This information is for guidance only. Final eligibility and decisions are made by the official government portal or department.'**
+  String get officialDisclaimer;
+
+  /// No description provided for @openOfficialWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Open official website'**
+  String get openOfficialWebsite;
+
+  /// No description provided for @couldNotOpenLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open the link. Please try again.'**
+  String get couldNotOpenLink;
+
+  /// No description provided for @callHelpline.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get callHelpline;
+
+  /// No description provided for @schemesScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Government schemes'**
+  String get schemesScreenTitle;
+
+  /// No description provided for @schemeOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get schemeOverview;
+
+  /// No description provided for @schemeEligibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Who may be eligible'**
+  String get schemeEligibility;
+
+  /// No description provided for @schemeBenefits.
+  ///
+  /// In en, this message translates to:
+  /// **'Benefits'**
+  String get schemeBenefits;
+
+  /// No description provided for @schemeDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents usually needed'**
+  String get schemeDocuments;
+
+  /// No description provided for @schemeDates.
+  ///
+  /// In en, this message translates to:
+  /// **'Important dates'**
+  String get schemeDates;
+
+  /// No description provided for @schemeDatesNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Dates change every season. Check the official website for current dates.'**
+  String get schemeDatesNote;
+
+  /// No description provided for @schemeApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply on the official portal'**
+  String get schemeApply;
+
+  /// No description provided for @pmKisanScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PM-KISAN'**
+  String get pmKisanScreenTitle;
+
+  /// No description provided for @pmKisanAadhaarNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You never need to enter your Aadhaar in this app. Use the official PM-KISAN website for registration, e-KYC and status.'**
+  String get pmKisanAadhaarNote;
+
+  /// No description provided for @officialServicesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official services'**
+  String get officialServicesTitle;
+
+  /// No description provided for @insuranceScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop insurance (PMFBY)'**
+  String get insuranceScreenTitle;
+
+  /// No description provided for @insuranceReportNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Report crop loss within the time limit set by the scheme. Use the official helpline or portal.'**
+  String get insuranceReportNote;
+
+  /// No description provided for @cropLibraryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop library'**
+  String get cropLibraryTitle;
+
+  /// No description provided for @cropLibrarySearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search crops'**
+  String get cropLibrarySearchHint;
+
+  /// No description provided for @cropLibraryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No crops match your search.\nTry another name.'**
+  String get cropLibraryEmpty;
+
+  /// No description provided for @cropLibraryLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load crop information.\nPlease try again.'**
+  String get cropLibraryLoadError;
+
+  /// No description provided for @cropOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get cropOverview;
+
+  /// No description provided for @cropSowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Sowing period'**
+  String get cropSowing;
+
+  /// No description provided for @cropSoil.
+  ///
+  /// In en, this message translates to:
+  /// **'Soil'**
+  String get cropSoil;
+
+  /// No description provided for @cropClimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Climate'**
+  String get cropClimate;
+
+  /// No description provided for @cropIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation'**
+  String get cropIrrigation;
+
+  /// No description provided for @cropNutrients.
+  ///
+  /// In en, this message translates to:
+  /// **'Nutrients'**
+  String get cropNutrients;
+
+  /// No description provided for @cropPests.
+  ///
+  /// In en, this message translates to:
+  /// **'Common pests'**
+  String get cropPests;
+
+  /// No description provided for @cropDiseases.
+  ///
+  /// In en, this message translates to:
+  /// **'Common diseases'**
+  String get cropDiseases;
+
+  /// No description provided for @cropHarvest.
+  ///
+  /// In en, this message translates to:
+  /// **'Harvest'**
+  String get cropHarvest;
+
+  /// No description provided for @cropStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
+  String get cropStorage;
+
+  /// No description provided for @cropGeneralNote.
+  ///
+  /// In en, this message translates to:
+  /// **'General guidance only. Check with your local Krishi Vigyan Kendra or agriculture department before acting on pests, diseases or nutrients.'**
+  String get cropGeneralNote;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// No description provided for @profitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit calculator'**
+  String get profitTitle;
+
+  /// No description provided for @estimateOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'ESTIMATE ONLY'**
+  String get estimateOnly;
+
+  /// No description provided for @estimateDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a rough estimate from the numbers you enter. Real income depends on yield, market price and costs, and is not guaranteed.'**
+  String get estimateDisclaimer;
+
+  /// No description provided for @profitCrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop (optional)'**
+  String get profitCrop;
+
+  /// No description provided for @profitArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Area (acres)'**
+  String get profitArea;
+
+  /// No description provided for @profitYield.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected yield per acre (quintal)'**
+  String get profitYield;
+
+  /// No description provided for @profitPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected price (₹ per quintal)'**
+  String get profitPrice;
+
+  /// No description provided for @costSeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Seed cost (₹)'**
+  String get costSeed;
+
+  /// No description provided for @costFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer cost (₹)'**
+  String get costFertilizer;
+
+  /// No description provided for @costLabour.
+  ///
+  /// In en, this message translates to:
+  /// **'Labour cost (₹)'**
+  String get costLabour;
+
+  /// No description provided for @costIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation cost (₹)'**
+  String get costIrrigation;
+
+  /// No description provided for @costTransport.
+  ///
+  /// In en, this message translates to:
+  /// **'Transport cost (₹)'**
+  String get costTransport;
+
+  /// No description provided for @costOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other costs (₹)'**
+  String get costOther;
+
+  /// No description provided for @profitRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated revenue'**
+  String get profitRevenue;
+
+  /// No description provided for @profitCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated cost'**
+  String get profitCost;
+
+  /// No description provided for @profitMargin.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated margin'**
+  String get profitMargin;
+
+  /// No description provided for @profitLossLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated loss'**
+  String get profitLossLabel;
+
+  /// No description provided for @profitCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate estimate'**
+  String get profitCalculate;
+
+  /// No description provided for @profitReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get profitReset;
+
+  /// No description provided for @invalidNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number'**
+  String get invalidNumber;
+
+  /// No description provided for @profitUseSavedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my latest saved price: ₹{price}'**
+  String profitUseSavedPrice(String price);
+
+  /// No description provided for @nearbyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby agriculture services'**
+  String get nearbyTitle;
+
+  /// No description provided for @nearbyIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens your maps app and searches near your farm.'**
+  String get nearbyIntro;
+
+  /// No description provided for @nearbyNearFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Searching near your farm location'**
+  String get nearbyNearFarm;
+
+  /// No description provided for @nearbyNearArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Searching near your area'**
+  String get nearbyNearArea;
+
+  /// No description provided for @nearbyApmc.
+  ///
+  /// In en, this message translates to:
+  /// **'APMC / mandi'**
+  String get nearbyApmc;
+
+  /// No description provided for @nearbySoilLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Soil testing lab'**
+  String get nearbySoilLab;
+
+  /// No description provided for @nearbyAgriOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Agriculture office'**
+  String get nearbyAgriOffice;
+
+  /// No description provided for @nearbySeedDealer.
+  ///
+  /// In en, this message translates to:
+  /// **'Seed dealer'**
+  String get nearbySeedDealer;
+
+  /// No description provided for @nearbyFertilizerDealer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer dealer'**
+  String get nearbyFertilizerDealer;
+
+  /// No description provided for @nearbyEquipmentRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Equipment rental'**
+  String get nearbyEquipmentRental;
+
+  /// No description provided for @nearbyTractorRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Tractor rental'**
+  String get nearbyTractorRental;
+
+  /// No description provided for @nearbyVet.
+  ///
+  /// In en, this message translates to:
+  /// **'Veterinary hospital'**
+  String get nearbyVet;
+
+  /// No description provided for @nearbyCsc.
+  ///
+  /// In en, this message translates to:
+  /// **'CSC centre'**
+  String get nearbyCsc;
+
+  /// No description provided for @nearbyBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get nearbyBank;
+
+  /// No description provided for @nearbyGovOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Government office'**
+  String get nearbyGovOffice;
+
+  /// No description provided for @moreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get moreTitle;
+
+  /// No description provided for @moreCropLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop library'**
+  String get moreCropLibrary;
+
+  /// No description provided for @moreProfit.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit calculator'**
+  String get moreProfit;
+
+  /// No description provided for @moreNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby services'**
+  String get moreNearby;
+
+  /// No description provided for @moreExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get moreExpenses;
+
+  /// No description provided for @moreSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get moreSettings;
+
+  /// No description provided for @moreHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & support'**
+  String get moreHelp;
+
+  /// No description provided for @moreAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get moreAbout;
+
+  /// No description provided for @mandiLiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Government mandi prices'**
+  String get mandiLiveTitle;
+
+  /// No description provided for @mandiReportedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported {date}'**
+  String mandiReportedOn(String date);
+
+  /// No description provided for @mandiMin.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum'**
+  String get mandiMin;
+
+  /// No description provided for @mandiModal.
+  ///
+  /// In en, this message translates to:
+  /// **'Modal'**
+  String get mandiModal;
+
+  /// No description provided for @mandiMax.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum'**
+  String get mandiMax;
+
+  /// No description provided for @mandiFilterCrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop'**
+  String get mandiFilterCrop;
+
+  /// No description provided for @mandiFilterDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get mandiFilterDistrict;
+
+  /// No description provided for @mandiFilterMarket.
+  ///
+  /// In en, this message translates to:
+  /// **'Market'**
+  String get mandiFilterMarket;
+
+  /// No description provided for @mandiFilterVariety.
+  ///
+  /// In en, this message translates to:
+  /// **'Variety'**
+  String get mandiFilterVariety;
+
+  /// No description provided for @mandiFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get mandiFilterAll;
+
+  /// No description provided for @mandiSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search market or variety'**
+  String get mandiSearchHint;
+
+  /// No description provided for @mandiNoPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'No mandi prices found.\nTry another market or crop.'**
+  String get mandiNoPrices;
+
+  /// No description provided for @mandiLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load prices.\nCheck your internet connection and try again.'**
+  String get mandiLoadError;
+
+  /// No description provided for @mandiOfflineBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re offline.\nShowing your last saved data.'**
+  String get mandiOfflineBanner;
+
+  /// No description provided for @mandiSavedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {time}'**
+  String mandiSavedOn(String time);
+
+  /// No description provided for @mandiRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests right now. Please try again in a few minutes.'**
+  String get mandiRateLimited;
+
+  /// No description provided for @mandiUnsupportedState.
+  ///
+  /// In en, this message translates to:
+  /// **'Live prices aren\'t available for your state yet. You can still log prices yourself.'**
+  String get mandiUnsupportedState;
+
+  /// No description provided for @mandiDataNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices are reported daily by markets and can be a few days old. They are not real-time auction prices.'**
+  String get mandiDataNote;
+
+  /// No description provided for @mandiSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all prices'**
+  String get mandiSeeAll;
+
+  /// No description provided for @mandiShowMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get mandiShowMore;
+
+  /// No description provided for @mandiHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Price history'**
+  String get mandiHistoryTitle;
+
+  /// No description provided for @mandiHistoryToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get mandiHistoryToday;
+
+  /// No description provided for @mandiHistory7.
+  ///
+  /// In en, this message translates to:
+  /// **'7 days'**
+  String get mandiHistory7;
+
+  /// No description provided for @mandiHistory30.
+  ///
+  /// In en, this message translates to:
+  /// **'30 days'**
+  String get mandiHistory30;
+
+  /// No description provided for @mandiHistoryUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Price history isn\'t available for this crop and market yet.'**
+  String get mandiHistoryUnavailable;
+
+  /// No description provided for @mandiAllMarkets.
+  ///
+  /// In en, this message translates to:
+  /// **'All markets'**
+  String get mandiAllMarkets;
+
+  /// No description provided for @mandiHistoryStateAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average across {state}'**
+  String mandiHistoryStateAverage(String state);
+
+  /// No description provided for @mandiLatestReported.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest reported price'**
+  String get mandiLatestReported;
+
+  /// No description provided for @mandiReportedCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported prices'**
+  String get mandiReportedCaption;
+
+  /// No description provided for @cropsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My crops'**
+  String get cropsTitle;
+
+  /// No description provided for @cropStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get cropStatusActive;
+
+  /// No description provided for @cropStatusHarvested.
+  ///
+  /// In en, this message translates to:
+  /// **'Harvested'**
+  String get cropStatusHarvested;
+
+  /// No description provided for @cropStatusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get cropStatusCompleted;
+
+  /// No description provided for @cropDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop details'**
+  String get cropDetailTitle;
+
+  /// No description provided for @expectedHarvestLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected harvest date'**
+  String get expectedHarvestLabel;
+
+  /// No description provided for @cropStatusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get cropStatusLabel;
+
+  /// No description provided for @editDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit details'**
+  String get editDetails;
+
+  /// No description provided for @editLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editLabel;
+
+  /// No description provided for @markHarvested.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as harvested'**
+  String get markHarvested;
+
+  /// No description provided for @markCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as completed'**
+  String get markCompleted;
+
+  /// No description provided for @markActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as active'**
+  String get markActive;
+
+  /// No description provided for @deleteCrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete crop'**
+  String get deleteCrop;
+
+  /// No description provided for @deleteCropConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this crop and stop tracking it? Its diary entries will no longer be shown.'**
+  String get deleteCropConfirm;
+
+  /// No description provided for @cropDetailCosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses for this crop'**
+  String get cropDetailCosts;
+
+  /// No description provided for @cropDetailNoNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes yet'**
+  String get cropDetailNoNotes;
+
+  /// No description provided for @cropDiaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop diary'**
+  String get cropDiaryTitle;
+
+  /// No description provided for @openCropDiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop diary'**
+  String get openCropDiary;
+
+  /// No description provided for @diaryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No activities yet.\nTap + to record what you did today.'**
+  String get diaryEmpty;
+
+  /// No description provided for @addActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Add activity'**
+  String get addActivity;
+
+  /// No description provided for @editActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit activity'**
+  String get editActivity;
+
+  /// No description provided for @activitySowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Sowing'**
+  String get activitySowing;
+
+  /// No description provided for @activityIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation'**
+  String get activityIrrigation;
+
+  /// No description provided for @activityFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer'**
+  String get activityFertilizer;
+
+  /// No description provided for @activitySpray.
+  ///
+  /// In en, this message translates to:
+  /// **'Spray'**
+  String get activitySpray;
+
+  /// No description provided for @activityPestObservation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pest observation'**
+  String get activityPestObservation;
+
+  /// No description provided for @activityDiseaseObservation.
+  ///
+  /// In en, this message translates to:
+  /// **'Disease observation'**
+  String get activityDiseaseObservation;
+
+  /// No description provided for @activityLabour.
+  ///
+  /// In en, this message translates to:
+  /// **'Labour'**
+  String get activityLabour;
+
+  /// No description provided for @activityHarvest.
+  ///
+  /// In en, this message translates to:
+  /// **'Harvest'**
+  String get activityHarvest;
+
+  /// No description provided for @activitySale.
+  ///
+  /// In en, this message translates to:
+  /// **'Sale'**
+  String get activitySale;
+
+  /// No description provided for @activityOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get activityOther;
+
+  /// No description provided for @activityTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What happened?'**
+  String get activityTypeLabel;
+
+  /// No description provided for @activityDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get activityDateLabel;
+
+  /// No description provided for @activityNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get activityNotesHint;
+
+  /// No description provided for @changePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Change photo'**
+  String get changePhoto;
+
+  /// No description provided for @removePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get removePhoto;
+
+  /// No description provided for @deleteActivityConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this diary entry?'**
+  String get deleteActivityConfirm;
+
+  /// No description provided for @noCropsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No crops yet. Add your first crop to start a diary.'**
+  String get noCropsYet;
+
+  /// No description provided for @activitiesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} activities'**
+  String activitiesCount(int count);
+
+  /// No description provided for @galleryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get galleryLabel;
+
+  /// No description provided for @editFarmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit farm'**
+  String get editFarmTitle;
+
+  /// No description provided for @waterSourceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Water source (optional)'**
+  String get waterSourceLabel;
+
+  /// No description provided for @farmDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm details'**
+  String get farmDetailsTitle;
+
+  /// No description provided for @deleteFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete farm'**
+  String get deleteFarm;
+
+  /// No description provided for @deleteFarmConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this farm? Its crops and records will no longer be shown.'**
+  String get deleteFarmConfirm;
+
+  /// No description provided for @useThisFarm.
+  ///
+  /// In en, this message translates to:
+  /// **'Use this farm'**
+  String get useThisFarm;
+
+  /// No description provided for @activeFarmBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Active farm'**
+  String get activeFarmBadge;
+
+  /// No description provided for @farmCropsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crops'**
+  String get farmCropsTitle;
+
+  /// No description provided for @farmToolsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Farm tools'**
+  String get farmToolsTitle;
+
+  /// No description provided for @toolDiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop diary'**
+  String get toolDiary;
+
+  /// No description provided for @toolExpenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Expenses'**
+  String get toolExpenses;
+
+  /// No description provided for @toolProfit.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit calculator'**
+  String get toolProfit;
+
+  /// No description provided for @toolDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get toolDocuments;
+
+  /// No description provided for @toolSoil.
+  ///
+  /// In en, this message translates to:
+  /// **'Soil health'**
+  String get toolSoil;
+
+  /// No description provided for @toolReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get toolReminders;
+
+  /// No description provided for @noFarmsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first farm to get started.'**
+  String get noFarmsYet;
+
+  /// No description provided for @farmAreaLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{area} {unit}'**
+  String farmAreaLine(String area, String unit);
+
+  /// No description provided for @remindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders'**
+  String get remindersTitle;
+
+  /// No description provided for @reminderNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New reminder'**
+  String get reminderNew;
+
+  /// No description provided for @reminderEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit reminder'**
+  String get reminderEdit;
+
+  /// No description provided for @remindersEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No reminders yet.\nTap + to add one.'**
+  String get remindersEmpty;
+
+  /// No description provided for @remindersUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get remindersUpcoming;
+
+  /// No description provided for @remindersCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get remindersCompleted;
+
+  /// No description provided for @reminderTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you need to do?'**
+  String get reminderTitleLabel;
+
+  /// No description provided for @reminderCategoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get reminderCategoryLabel;
+
+  /// No description provided for @reminderDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get reminderDateLabel;
+
+  /// No description provided for @reminderTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get reminderTimeLabel;
+
+  /// No description provided for @reminderRepeatLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat'**
+  String get reminderRepeatLabel;
+
+  /// No description provided for @repeatNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Does not repeat'**
+  String get repeatNone;
+
+  /// No description provided for @repeatDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Every day'**
+  String get repeatDaily;
+
+  /// No description provided for @repeatWeekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every week'**
+  String get repeatWeekly;
+
+  /// No description provided for @repeatMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Every month'**
+  String get repeatMonthly;
+
+  /// No description provided for @reminderCatIrrigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Irrigation'**
+  String get reminderCatIrrigation;
+
+  /// No description provided for @reminderCatFertilizer.
+  ///
+  /// In en, this message translates to:
+  /// **'Fertilizer'**
+  String get reminderCatFertilizer;
+
+  /// No description provided for @reminderCatSpray.
+  ///
+  /// In en, this message translates to:
+  /// **'Spray'**
+  String get reminderCatSpray;
+
+  /// No description provided for @reminderCatInspection.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop inspection'**
+  String get reminderCatInspection;
+
+  /// No description provided for @reminderCatHarvest.
+  ///
+  /// In en, this message translates to:
+  /// **'Harvest'**
+  String get reminderCatHarvest;
+
+  /// No description provided for @reminderCatLabour.
+  ///
+  /// In en, this message translates to:
+  /// **'Labour'**
+  String get reminderCatLabour;
+
+  /// No description provided for @reminderCatEquipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Equipment maintenance'**
+  String get reminderCatEquipment;
+
+  /// No description provided for @reminderCatGovernmentDeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Government deadline'**
+  String get reminderCatGovernmentDeadline;
+
+  /// No description provided for @reminderCatInsuranceDeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance deadline'**
+  String get reminderCatInsuranceDeadline;
+
+  /// No description provided for @reminderCatCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get reminderCatCustom;
+
+  /// No description provided for @reminderDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this reminder?'**
+  String get reminderDeleteConfirm;
+
+  /// No description provided for @reminderPastTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a time in the future'**
+  String get reminderPastTime;
+
+  /// No description provided for @reminderMarkDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark done'**
+  String get reminderMarkDone;
+
+  /// No description provided for @reminderMarkNotDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark not done'**
+  String get reminderMarkNotDone;
+
+  /// No description provided for @reminderRepeatsEvery.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeats: {rule}'**
+  String reminderRepeatsEvery(String rule);
+
+  /// No description provided for @todayRemindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s reminders'**
+  String get todayRemindersTitle;
+
+  /// No description provided for @documentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My documents'**
+  String get documentsTitle;
+
+  /// No description provided for @docCat712.
+  ///
+  /// In en, this message translates to:
+  /// **'7/12 Extract'**
+  String get docCat712;
+
+  /// No description provided for @docCat8a.
+  ///
+  /// In en, this message translates to:
+  /// **'8A Extract'**
+  String get docCat8a;
+
+  /// No description provided for @docCatSoil.
+  ///
+  /// In en, this message translates to:
+  /// **'Soil Health Card'**
+  String get docCatSoil;
+
+  /// No description provided for @docCatInsurance.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop Insurance'**
+  String get docCatInsurance;
+
+  /// No description provided for @docCatBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Documents'**
+  String get docCatBank;
+
+  /// No description provided for @docCatPmKisan.
+  ///
+  /// In en, this message translates to:
+  /// **'PM-KISAN'**
+  String get docCatPmKisan;
+
+  /// No description provided for @docCatMahadbt.
+  ///
+  /// In en, this message translates to:
+  /// **'MahaDBT'**
+  String get docCatMahadbt;
+
+  /// No description provided for @docCatOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get docCatOther;
+
+  /// No description provided for @documentsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No documents yet.\nKeep your 7/12, 8A and insurance papers here.'**
+  String get documentsEmpty;
+
+  /// No description provided for @addDocument.
+  ///
+  /// In en, this message translates to:
+  /// **'Add document'**
+  String get addDocument;
+
+  /// No description provided for @documentTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get documentTitleLabel;
+
+  /// No description provided for @chooseFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose PDF or photo'**
+  String get chooseFile;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take photo'**
+  String get takePhoto;
+
+  /// No description provided for @noFileChosen.
+  ///
+  /// In en, this message translates to:
+  /// **'No file chosen'**
+  String get noFileChosen;
+
+  /// No description provided for @docUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Only PDF, JPG and PNG files are allowed.'**
+  String get docUnsupported;
+
+  /// No description provided for @docTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'This file is larger than 10 MB. Please choose a smaller one.'**
+  String get docTooLarge;
+
+  /// No description provided for @docEmptyFile.
+  ///
+  /// In en, this message translates to:
+  /// **'This file is empty.'**
+  String get docEmptyFile;
+
+  /// No description provided for @docSavedOnPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved on this phone'**
+  String get docSavedOnPhone;
+
+  /// No description provided for @docBackedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Backed up'**
+  String get docBackedUp;
+
+  /// No description provided for @docDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this document from your phone?'**
+  String get docDeleteConfirm;
+
+  /// No description provided for @docOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t open this file.'**
+  String get docOpenFailed;
+
+  /// No description provided for @docPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your documents are kept privately on this phone.'**
+  String get docPrivacyNote;
+
+  /// No description provided for @soilTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Soil health'**
+  String get soilTitle;
+
+  /// No description provided for @soilEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No soil tests yet.\nAdd values from your lab report or Soil Health Card.'**
+  String get soilEmpty;
+
+  /// No description provided for @soilAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add soil test'**
+  String get soilAdd;
+
+  /// No description provided for @soilPh.
+  ///
+  /// In en, this message translates to:
+  /// **'pH'**
+  String get soilPh;
+
+  /// No description provided for @soilNitrogen.
+  ///
+  /// In en, this message translates to:
+  /// **'Nitrogen, N (kg/ha)'**
+  String get soilNitrogen;
+
+  /// No description provided for @soilPhosphorus.
+  ///
+  /// In en, this message translates to:
+  /// **'Phosphorus, P (kg/ha)'**
+  String get soilPhosphorus;
+
+  /// No description provided for @soilPotassium.
+  ///
+  /// In en, this message translates to:
+  /// **'Potassium, K (kg/ha)'**
+  String get soilPotassium;
+
+  /// No description provided for @soilOrganicCarbon.
+  ///
+  /// In en, this message translates to:
+  /// **'Organic carbon (%)'**
+  String get soilOrganicCarbon;
+
+  /// No description provided for @soilOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other nutrients (optional)'**
+  String get soilOther;
+
+  /// No description provided for @soilOtherHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Zinc 0.6 ppm, Sulphur 12 ppm'**
+  String get soilOtherHint;
+
+  /// No description provided for @soilDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Test date'**
+  String get soilDate;
+
+  /// No description provided for @soilAttachCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach Soil Health Card'**
+  String get soilAttachCard;
+
+  /// No description provided for @soilCardAttached.
+  ///
+  /// In en, this message translates to:
+  /// **'Card attached'**
+  String get soilCardAttached;
+
+  /// No description provided for @soilViewCard.
+  ///
+  /// In en, this message translates to:
+  /// **'View card'**
+  String get soilViewCard;
+
+  /// No description provided for @soilAdviceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'These are the values you entered. Ask your local Krishi Vigyan Kendra or agriculture officer what they mean for fertilizer. This app does not prescribe fertilizer amounts.'**
+  String get soilAdviceNote;
+
+  /// No description provided for @soilValueRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a value between {min} and {max}'**
+  String soilValueRange(String min, String max);
+
+  /// No description provided for @soilNeedOneValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least one value'**
+  String get soilNeedOneValue;
+
+  /// No description provided for @soilDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this soil test?'**
+  String get soilDeleteConfirm;
+
+  /// No description provided for @docBackUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up to cloud'**
+  String get docBackUp;
+
+  /// No description provided for @docBackupFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t back up this document. Check your internet connection and try again.'**
+  String get docBackupFailed;
+
+  /// No description provided for @pushSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Push notifications'**
+  String get pushSectionTitle;
+
+  /// No description provided for @pushWeather.
+  ///
+  /// In en, this message translates to:
+  /// **'Weather alerts'**
+  String get pushWeather;
+
+  /// No description provided for @pushMandi.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandi price alerts'**
+  String get pushMandi;
+
+  /// No description provided for @pushGovt.
+  ///
+  /// In en, this message translates to:
+  /// **'Government updates'**
+  String get pushGovt;
+
+  /// No description provided for @pushNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Only important alerts. Turn off any you don\'t want.'**
+  String get pushNote;
+
+  /// No description provided for @nearbyMandisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandis near you'**
+  String get nearbyMandisTitle;
+
+  /// No description provided for @nearbyMandisInDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'In {district}'**
+  String nearbyMandisInDistrict(String district);
+
+  /// No description provided for @nearbyMandisOtherDistricts.
+  ///
+  /// In en, this message translates to:
+  /// **'Other districts'**
+  String get nearbyMandisOtherDistricts;
+
+  /// No description provided for @nearbyMandisPickDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your district'**
+  String get nearbyMandisPickDistrict;
+
+  /// No description provided for @nearbyMandisNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Markets are grouped by district. Distances aren\'t shown because the price data has no map locations.'**
+  String get nearbyMandisNote;
+
+  /// No description provided for @nearbyMandisNoneInDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'No mandis listed in {district}. See other districts below.'**
+  String nearbyMandisNoneInDistrict(String district);
+
+  /// No description provided for @nearbyMandisDirections.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions'**
+  String get nearbyMandisDirections;
+
+  /// No description provided for @nearbyMandisPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices'**
+  String get nearbyMandisPrices;
+
+  /// No description provided for @nearbyMandisDistrictLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get nearbyMandisDistrictLabel;
+
+  /// No description provided for @talukaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Taluka (optional)'**
+  String get talukaLabel;
+
+  /// No description provided for @rainfallLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rainfall today'**
+  String get rainfallLabel;
+
+  /// No description provided for @showSixteenDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Show 16 days'**
+  String get showSixteenDays;
+
+  /// No description provided for @showFewerDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Show fewer days'**
+  String get showFewerDays;
+
+  /// No description provided for @sixteenDayForecastTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'16-Day Forecast'**
+  String get sixteenDayForecastTitle;
+
+  /// No description provided for @schemesSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search schemes'**
+  String get schemesSearchHint;
+
+  /// No description provided for @schemesNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No schemes match your search.\nTry another word.'**
+  String get schemesNoMatch;
+
+  /// No description provided for @soilFindLabs.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby soil testing labs'**
+  String get soilFindLabs;
+
+  /// No description provided for @reminderCropLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop (optional)'**
+  String get reminderCropLabel;
+
+  /// No description provided for @reminderNoCrop.
+  ///
+  /// In en, this message translates to:
+  /// **'No specific crop'**
+  String get reminderNoCrop;
+
+  /// No description provided for @reminderNotifyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Send me a notification'**
+  String get reminderNotifyLabel;
+
+  /// No description provided for @reminderNotifyOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification off'**
+  String get reminderNotifyOff;
+
+  /// No description provided for @activityCostLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost (₹, optional)'**
+  String get activityCostLabel;
 }
 
 class _AppLocalizationsDelegate

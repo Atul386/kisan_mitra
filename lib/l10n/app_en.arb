@@ -189,7 +189,7 @@
   "concernWaterStress": "Water stress",
   "concernDisease": "Disease",
   "concernOther": "Other",
-  "addPhoto": "Add Photo",
+  "addPhoto": "Add photo",
   "addNote": "Add Note",
   "checkInSavedMessage": "Check-in saved",
   "alreadyCheckedInMessage": "You've already checked in today",
@@ -205,7 +205,7 @@
   },
   "syncNotConnectedMessage": "Your data is safely saved on this device. Online sync isn't connected yet.",
   "orDivider": "or",
-  "dashboardTagline": "Keep farming, keep growing!",
+  "dashboardTagline": "Your farm, your companion",
   "rainAlertTitle": "Rain Alert",
   "activeCropLabel": "Active Crop",
   "tasksCountLabel": "{count, plural, =1{1 task} other{{count} tasks}}",
@@ -228,7 +228,7 @@
   "weatherConditionStorm": "Thunderstorm",
   "weatherConditionSnow": "Snowy",
   "liveMandiPricesTitle": "Live Mandi Prices",
-  "liveMandiSourceLabel": "Source: Agmarknet (data.gov.in)",
+  "liveMandiSourceLabel": "Source: Mandi Price API (data.gov.in)",
   "modalPriceLabel": "Modal: ₹{price}",
   "@modalPriceLabel": {
     "placeholders": {
@@ -335,8 +335,429 @@
   "helpFaqLanguageQ": "How do I change the language?",
   "helpFaqLanguageA": "Go to Profile → Language and pick English, हिंदी or मराठी.",
   "helpFaqDataQ": "Is my farm data safe?",
-  "helpFaqDataA": "Your data stays on your phone. You can delete it any time from Profile → Delete account.",
+  "helpFaqDataA": "Your data stays on your phone. You can delete it any time from Profile → Reset app data.",
   "deleteAccountTitle": "Delete account",
   "deleteAccountConfirmMessage": "This permanently deletes your profile, farms, crops, tasks, expenses and all logs from this phone. This can't be undone.",
-  "deleteButton": "Delete"
+  "deleteButton": "Delete",
+  "resetAppDataTitle": "Reset app data",
+  "resetAppDataMessage": "This permanently deletes your profile, farms, crops, tasks, expenses and all logs from this phone, and starts the app fresh. This can't be undone.",
+  "sevenDayForecastTitle": "7-Day Forecast",
+  "forecastTodayLabel": "Today",
+  "requiredFieldError": "Please fill this in",
+  "invalidAreaError": "Enter the area as a number, e.g. 2.5",
+  "hourlyForecastTitle": "Next 24 hours",
+  "feelsLikeLabel": "Feels like {temp}°",
+  "@feelsLikeLabel": {
+    "placeholders": {
+      "temp": {
+        "type": "String"
+      }
+    }
+  },
+  "weatherDetailsTitle": "Details",
+  "uvIndexLabel": "UV index",
+  "sunriseLabel": "Sunrise",
+  "sunsetLabel": "Sunset",
+  "farmAdviceTitle": "Farm advice",
+  "weatherDemoBadge": "Demo data",
+  "weatherNoAdvice": "No special precautions today — a normal farm day.",
+  "highLowLabel": "H {high}°  L {low}°",
+  "@highLowLabel": {
+    "placeholders": {
+      "high": {
+        "type": "String"
+      },
+      "low": {
+        "type": "String"
+      }
+    }
+  },
+  "quickActionsTitle": "Quick actions",
+  "qaSpray": "Log spray",
+  "qaExpense": "Add expense",
+  "qaFertilizer": "Fertilizer",
+  "qaIrrigation": "Irrigation",
+  "qaCropCheck": "Crop check",
+  "farmSummaryTitle": "Your farm at a glance",
+  "summaryArea": "Area",
+  "summaryExpenses": "Expenses",
+  "summaryCropDay": "Day {day} of about {total}",
+  "@summaryCropDay": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "summaryNoCrop": "Add a crop to track its progress",
+  "summaryNotSet": "Not set",
+  "mandiTickerTitle": "Mandi prices today",
+  "mandiSampleCaption": "Sample prices",
+  "mandiPerQuintal": "per quintal",
+  "schemesTitle": "Schemes for farmers",
+  "schemesSampleCaption": "Sample information",
+  "schemePmKisanTitle": "PM-Kisan",
+  "schemePmKisanDesc": "₹6,000 a year in three instalments, straight to your bank account.",
+  "schemePmfbyTitle": "Crop insurance (PMFBY)",
+  "schemePmfbyDesc": "Insure your crop against drought, flood and pests at a low premium.",
+  "schemeKccTitle": "Kisan Credit Card",
+  "schemeKccDesc": "Low-interest farm loans for seeds, fertilizer and equipment.",
+  "dailyTipTitle": "Tip of the day",
+  "dailyTipBody": "Water early in the morning. Less water is lost to the sun and leaves dry before night, which lowers disease.",
+  "navAdvisories": "Advisories",
+  "navMore": "More",
+  "advisoriesTitle": "Advisories",
+  "advWeather": "Weather",
+  "advWeatherDesc": "Forecast and farm advice",
+  "advCropAdvisories": "Crop advisories",
+  "advCropAdvisoriesDesc": "Crop guide and official advisories",
+  "advSchemes": "Government schemes",
+  "advSchemesDesc": "Schemes that may help your farm",
+  "advInsurance": "Crop insurance",
+  "advInsuranceDesc": "PMFBY information and official services",
+  "advPmKisan": "PM-KISAN",
+  "advPmKisanDesc": "Registration, e-KYC and payment status",
+  "officialDisclaimer": "This information is for guidance only. Final eligibility and decisions are made by the official government portal or department.",
+  "openOfficialWebsite": "Open official website",
+  "couldNotOpenLink": "Couldn't open the link. Please try again.",
+  "callHelpline": "Call",
+  "schemesScreenTitle": "Government schemes",
+  "schemeOverview": "Overview",
+  "schemeEligibility": "Who may be eligible",
+  "schemeBenefits": "Benefits",
+  "schemeDocuments": "Documents usually needed",
+  "schemeDates": "Important dates",
+  "schemeDatesNote": "Dates change every season. Check the official website for current dates.",
+  "schemeApply": "Apply on the official portal",
+  "pmKisanScreenTitle": "PM-KISAN",
+  "pmKisanAadhaarNote": "You never need to enter your Aadhaar in this app. Use the official PM-KISAN website for registration, e-KYC and status.",
+  "officialServicesTitle": "Official services",
+  "insuranceScreenTitle": "Crop insurance (PMFBY)",
+  "insuranceReportNote": "Report crop loss within the time limit set by the scheme. Use the official helpline or portal.",
+  "cropLibraryTitle": "Crop library",
+  "cropLibrarySearchHint": "Search crops",
+  "cropLibraryEmpty": "No crops match your search.\nTry another name.",
+  "cropLibraryLoadError": "Couldn't load crop information.\nPlease try again.",
+  "cropOverview": "Overview",
+  "cropSowing": "Sowing period",
+  "cropSoil": "Soil",
+  "cropClimate": "Climate",
+  "cropIrrigation": "Irrigation",
+  "cropNutrients": "Nutrients",
+  "cropPests": "Common pests",
+  "cropDiseases": "Common diseases",
+  "cropHarvest": "Harvest",
+  "cropStorage": "Storage",
+  "cropGeneralNote": "General guidance only. Check with your local Krishi Vigyan Kendra or agriculture department before acting on pests, diseases or nutrients.",
+  "tryAgain": "Try again",
+  "profitTitle": "Profit calculator",
+  "estimateOnly": "ESTIMATE ONLY",
+  "estimateDisclaimer": "This is a rough estimate from the numbers you enter. Real income depends on yield, market price and costs, and is not guaranteed.",
+  "profitCrop": "Crop (optional)",
+  "profitArea": "Area (acres)",
+  "profitYield": "Expected yield per acre (quintal)",
+  "profitPrice": "Expected price (₹ per quintal)",
+  "costSeed": "Seed cost (₹)",
+  "costFertilizer": "Fertilizer cost (₹)",
+  "costLabour": "Labour cost (₹)",
+  "costIrrigation": "Irrigation cost (₹)",
+  "costTransport": "Transport cost (₹)",
+  "costOther": "Other costs (₹)",
+  "profitRevenue": "Estimated revenue",
+  "profitCost": "Estimated cost",
+  "profitMargin": "Estimated margin",
+  "profitLossLabel": "Estimated loss",
+  "profitCalculate": "Calculate estimate",
+  "profitReset": "Clear",
+  "invalidNumber": "Enter a valid number",
+  "profitUseSavedPrice": "Use my latest saved price: ₹{price}",
+  "nearbyTitle": "Nearby agriculture services",
+  "nearbyIntro": "Opens your maps app and searches near your farm.",
+  "nearbyNearFarm": "Searching near your farm location",
+  "nearbyNearArea": "Searching near your area",
+  "nearbyApmc": "APMC / mandi",
+  "nearbySoilLab": "Soil testing lab",
+  "nearbyAgriOffice": "Agriculture office",
+  "nearbySeedDealer": "Seed dealer",
+  "nearbyFertilizerDealer": "Fertilizer dealer",
+  "nearbyEquipmentRental": "Equipment rental",
+  "nearbyTractorRental": "Tractor rental",
+  "nearbyVet": "Veterinary hospital",
+  "nearbyCsc": "CSC centre",
+  "nearbyBank": "Bank",
+  "nearbyGovOffice": "Government office",
+  "moreTitle": "More",
+  "moreCropLibrary": "Crop library",
+  "moreProfit": "Profit calculator",
+  "moreNearby": "Nearby services",
+  "moreExpenses": "Expenses",
+  "moreSettings": "Settings",
+  "moreHelp": "Help & support",
+  "moreAbout": "About",
+  "@profitUseSavedPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "mandiLiveTitle": "Government mandi prices",
+  "mandiReportedOn": "Reported {date}",
+  "mandiMin": "Minimum",
+  "mandiModal": "Modal",
+  "mandiMax": "Maximum",
+  "mandiFilterCrop": "Crop",
+  "mandiFilterDistrict": "District",
+  "mandiFilterMarket": "Market",
+  "mandiFilterVariety": "Variety",
+  "mandiFilterAll": "All",
+  "mandiSearchHint": "Search market or variety",
+  "mandiNoPrices": "No mandi prices found.\nTry another market or crop.",
+  "mandiLoadError": "Unable to load prices.\nCheck your internet connection and try again.",
+  "mandiOfflineBanner": "You're offline.\nShowing your last saved data.",
+  "mandiSavedOn": "Saved {time}",
+  "mandiRateLimited": "Too many requests right now. Please try again in a few minutes.",
+  "mandiUnsupportedState": "Live prices aren't available for your state yet. You can still log prices yourself.",
+  "mandiDataNote": "Prices are reported daily by markets and can be a few days old. They are not real-time auction prices.",
+  "mandiSeeAll": "See all prices",
+  "mandiShowMore": "Show more",
+  "mandiHistoryTitle": "Price history",
+  "mandiHistoryToday": "Today",
+  "mandiHistory7": "7 days",
+  "mandiHistory30": "30 days",
+  "mandiHistoryUnavailable": "Price history isn't available for this crop and market yet.",
+  "mandiAllMarkets": "All markets",
+  "mandiHistoryStateAverage": "Average across {state}",
+  "mandiLatestReported": "Latest reported price",
+  "@mandiReportedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@mandiSavedOn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@mandiHistoryStateAverage": {
+    "placeholders": {
+      "state": {
+        "type": "String"
+      }
+    }
+  },
+  "mandiReportedCaption": "Reported prices",
+  "cropsTitle": "My crops",
+  "cropStatusActive": "Active",
+  "cropStatusHarvested": "Harvested",
+  "cropStatusCompleted": "Completed",
+  "cropDetailTitle": "Crop details",
+  "expectedHarvestLabel": "Expected harvest date",
+  "cropStatusLabel": "Status",
+  "editDetails": "Edit details",
+  "editLabel": "Edit",
+  "markHarvested": "Mark as harvested",
+  "markCompleted": "Mark as completed",
+  "markActive": "Mark as active",
+  "deleteCrop": "Delete crop",
+  "deleteCropConfirm": "Delete this crop and stop tracking it? Its diary entries will no longer be shown.",
+  "cropDetailCosts": "Expenses for this crop",
+  "cropDetailNoNotes": "No notes yet",
+  "cropDiaryTitle": "Crop diary",
+  "openCropDiary": "Crop diary",
+  "diaryEmpty": "No activities yet.\nTap + to record what you did today.",
+  "addActivity": "Add activity",
+  "editActivity": "Edit activity",
+  "activitySowing": "Sowing",
+  "activityIrrigation": "Irrigation",
+  "activityFertilizer": "Fertilizer",
+  "activitySpray": "Spray",
+  "activityPestObservation": "Pest observation",
+  "activityDiseaseObservation": "Disease observation",
+  "activityLabour": "Labour",
+  "activityHarvest": "Harvest",
+  "activitySale": "Sale",
+  "activityOther": "Other",
+  "activityTypeLabel": "What happened?",
+  "activityDateLabel": "Date",
+  "activityNotesHint": "Notes (optional)",
+  "changePhoto": "Change photo",
+  "removePhoto": "Remove photo",
+  "deleteActivityConfirm": "Delete this diary entry?",
+  "noCropsYet": "No crops yet. Add your first crop to start a diary.",
+  "activitiesCount": "{count} activities",
+  "@activitiesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "galleryLabel": "Gallery",
+  "editFarmTitle": "Edit farm",
+  "waterSourceLabel": "Water source (optional)",
+  "farmDetailsTitle": "Farm details",
+  "deleteFarm": "Delete farm",
+  "deleteFarmConfirm": "Delete this farm? Its crops and records will no longer be shown.",
+  "useThisFarm": "Use this farm",
+  "activeFarmBadge": "Active farm",
+  "farmCropsTitle": "Crops",
+  "farmToolsTitle": "Farm tools",
+  "toolDiary": "Crop diary",
+  "toolExpenses": "Expenses",
+  "toolProfit": "Profit calculator",
+  "toolDocuments": "Documents",
+  "toolSoil": "Soil health",
+  "toolReminders": "Reminders",
+  "noFarmsYet": "Add your first farm to get started.",
+  "farmAreaLine": "{area} {unit}",
+  "@farmAreaLine": {
+    "placeholders": {
+      "area": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "remindersTitle": "Reminders",
+  "reminderNew": "New reminder",
+  "reminderEdit": "Edit reminder",
+  "remindersEmpty": "No reminders yet.\nTap + to add one.",
+  "remindersUpcoming": "Upcoming",
+  "remindersCompleted": "Completed",
+  "reminderTitleLabel": "What do you need to do?",
+  "reminderCategoryLabel": "Category",
+  "reminderDateLabel": "Date",
+  "reminderTimeLabel": "Time",
+  "reminderRepeatLabel": "Repeat",
+  "repeatNone": "Does not repeat",
+  "repeatDaily": "Every day",
+  "repeatWeekly": "Every week",
+  "repeatMonthly": "Every month",
+  "reminderCatIrrigation": "Irrigation",
+  "reminderCatFertilizer": "Fertilizer",
+  "reminderCatSpray": "Spray",
+  "reminderCatInspection": "Crop inspection",
+  "reminderCatHarvest": "Harvest",
+  "reminderCatLabour": "Labour",
+  "reminderCatEquipment": "Equipment maintenance",
+  "reminderCatGovernmentDeadline": "Government deadline",
+  "reminderCatInsuranceDeadline": "Insurance deadline",
+  "reminderCatCustom": "Custom",
+  "reminderDeleteConfirm": "Delete this reminder?",
+  "reminderPastTime": "Pick a time in the future",
+  "reminderMarkDone": "Mark done",
+  "reminderMarkNotDone": "Mark not done",
+  "reminderRepeatsEvery": "Repeats: {rule}",
+  "todayRemindersTitle": "Today's reminders",
+  "@reminderRepeatsEvery": {
+    "placeholders": {
+      "rule": {
+        "type": "String"
+      }
+    }
+  },
+  "documentsTitle": "My documents",
+  "docCat712": "7/12 Extract",
+  "docCat8a": "8A Extract",
+  "docCatSoil": "Soil Health Card",
+  "docCatInsurance": "Crop Insurance",
+  "docCatBank": "Bank Documents",
+  "docCatPmKisan": "PM-KISAN",
+  "docCatMahadbt": "MahaDBT",
+  "docCatOther": "Other",
+  "documentsEmpty": "No documents yet.\nKeep your 7/12, 8A and insurance papers here.",
+  "addDocument": "Add document",
+  "documentTitleLabel": "Title",
+  "chooseFile": "Choose PDF or photo",
+  "takePhoto": "Take photo",
+  "noFileChosen": "No file chosen",
+  "docUnsupported": "Only PDF, JPG and PNG files are allowed.",
+  "docTooLarge": "This file is larger than 10 MB. Please choose a smaller one.",
+  "docEmptyFile": "This file is empty.",
+  "docSavedOnPhone": "Saved on this phone",
+  "docBackedUp": "Backed up",
+  "docDeleteConfirm": "Delete this document from your phone?",
+  "docOpenFailed": "Couldn't open this file.",
+  "docPrivacyNote": "Your documents are kept privately on this phone.",
+  "soilTitle": "Soil health",
+  "soilEmpty": "No soil tests yet.\nAdd values from your lab report or Soil Health Card.",
+  "soilAdd": "Add soil test",
+  "soilPh": "pH",
+  "soilNitrogen": "Nitrogen, N (kg/ha)",
+  "soilPhosphorus": "Phosphorus, P (kg/ha)",
+  "soilPotassium": "Potassium, K (kg/ha)",
+  "soilOrganicCarbon": "Organic carbon (%)",
+  "soilOther": "Other nutrients (optional)",
+  "soilOtherHint": "e.g. Zinc 0.6 ppm, Sulphur 12 ppm",
+  "soilDate": "Test date",
+  "soilAttachCard": "Attach Soil Health Card",
+  "soilCardAttached": "Card attached",
+  "soilViewCard": "View card",
+  "soilAdviceNote": "These are the values you entered. Ask your local Krishi Vigyan Kendra or agriculture officer what they mean for fertilizer. This app does not prescribe fertilizer amounts.",
+  "soilValueRange": "Enter a value between {min} and {max}",
+  "soilNeedOneValue": "Enter at least one value",
+  "soilDeleteConfirm": "Delete this soil test?",
+  "@soilValueRange": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "docBackUp": "Back up to cloud",
+  "docBackupFailed": "Couldn't back up this document. Check your internet connection and try again.",
+  "pushSectionTitle": "Push notifications",
+  "pushWeather": "Weather alerts",
+  "pushMandi": "Mandi price alerts",
+  "pushGovt": "Government updates",
+  "pushNote": "Only important alerts. Turn off any you don't want.",
+  "nearbyMandisTitle": "Mandis near you",
+  "nearbyMandisInDistrict": "In {district}",
+  "nearbyMandisOtherDistricts": "Other districts",
+  "nearbyMandisPickDistrict": "Choose your district",
+  "nearbyMandisNote": "Markets are grouped by district. Distances aren't shown because the price data has no map locations.",
+  "nearbyMandisNoneInDistrict": "No mandis listed in {district}. See other districts below.",
+  "nearbyMandisDirections": "Directions",
+  "nearbyMandisPrices": "Prices",
+  "nearbyMandisDistrictLabel": "District",
+  "@nearbyMandisInDistrict": {
+    "placeholders": {
+      "district": {
+        "type": "String"
+      }
+    }
+  },
+  "@nearbyMandisNoneInDistrict": {
+    "placeholders": {
+      "district": {
+        "type": "String"
+      }
+    }
+  },
+  "talukaLabel": "Taluka (optional)",
+  "rainfallLabel": "Rainfall today",
+  "showSixteenDays": "Show 16 days",
+  "showFewerDays": "Show fewer days",
+  "sixteenDayForecastTitle": "16-Day Forecast",
+  "schemesSearchHint": "Search schemes",
+  "schemesNoMatch": "No schemes match your search.\nTry another word.",
+  "soilFindLabs": "Find nearby soil testing labs",
+  "reminderCropLabel": "Crop (optional)",
+  "reminderNoCrop": "No specific crop",
+  "reminderNotifyLabel": "Send me a notification",
+  "reminderNotifyOff": "Notification off",
+  "activityCostLabel": "Cost (₹, optional)"
 }

@@ -21,22 +21,22 @@ class PrivacyScreen extends StatelessWidget {
           children: const [
             _Section(
               title: 'What we store',
-              body: 'Your farm, crop, task, expense, irrigation and price records are '
+              body:
+                  'Your farm, crop, task, expense, irrigation and price records are '
                   'saved on this device. None of it is sent anywhere yet — this app '
                   'does not have a connected server.',
             ),
             _Section(
               title: 'What we don\'t collect',
-              body: 'No Aadhaar, bank details, or contacts. Location is only used if '
+              body:
+                  'No Aadhaar, bank details, or contacts. Location is only used if '
                   'you choose to add it to a farm, for weather.',
             ),
-            _Section(
-              title: 'Deleting your data',
-              body: 'Uninstalling the app removes all locally saved data.',
-            ),
+            _Section(title: 'Deleting your data', body: 'Uninstalling the app removes all locally saved data.'),
             _Section(
               title: 'Status',
-              body: 'This is a development build. A reviewed privacy policy will '
+              body:
+                  'This is a development build. A reviewed privacy policy will '
                   'replace this page before the app is published.',
             ),
           ],

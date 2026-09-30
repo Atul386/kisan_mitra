@@ -5,14 +5,17 @@ import 'package:go_router/go_router.dart';
 import '../../../core/notifications/notification_providers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
+import 'package:intl/intl.dart' show DateFormat;
+
 import '../domain/live_mandi_price.dart';
+import 'mandi_widgets.dart';
 import '../mandi_providers.dart';
 import '../mandi_watchlist.dart';
 
 /// Two sources feed this screen (see lib/features/mandi/README.md):
-/// government Agmarknet live prices when a data.gov.in API key is
-/// configured, and the farmer's own manually logged prices, which always
-/// work offline and drive the trend cards.
+/// reported government mandi prices from the keyless Mandi Price API, and
+/// the farmer's own manually logged prices, which always work offline and
+/// drive the trend cards.
 class MandiTab extends ConsumerWidget {
   const MandiTab({super.key});
 
@@ -20,7 +23,8 @@ class MandiTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = AppLocalizations.of(context)!;
     final trends = ref.watch(mandiTrendsProvider);
-    final livePrices = ref.watch(liveMandiPricesProvider).value ?? const [];
+    final liveResult = ref.watch(liveMandiResultProvider);
+    final livePrices = liveResult.valueOrNull?.value ?? const <LiveMandiPrice>[];
     final watchlist = ref.watch(mandiWatchlistProvider);
 
     final favouriteTrends = trends.where((tr) => watchlist.isFavourite(tr.latest.commodity)).toList();
@@ -32,6 +36,13 @@ class MandiTab extends ConsumerWidget {
         backgroundColor: AppColors.background,
         appBar: AppBar(
           title: Text(t.mandi),
+          actions: [
+            IconButton(
+              tooltip: t.nearbyMandisTitle,
+              icon: const Icon(Icons.place_outlined),
+              onPressed: () => context.push('/mandi/nearby'),
+            ),
+          ],
           bottom: TabBar(tabs: [Tab(text: t.mandiAllTab), Tab(text: t.mandiFavouritesTab)]),
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -45,10 +56,7 @@ class MandiTab extends ConsumerWidget {
               ListView(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
                 children: [
-                  if (livePrices.isNotEmpty)
-                    _LiveMandiPricesSection(prices: livePrices)
-                  else
-                    _InfoBanner(text: t.mandiManualTrackingNote),
+                  _LiveMandiPricesSection(prices: livePrices, result: liveResult),
                   const SizedBox(height: 20),
                   Text(t.yourTrackedPricesLabel, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
                   const SizedBox(height: 12),
@@ -118,7 +126,7 @@ class _LivePriceTile extends StatelessWidget {
   }
 }
 
-Future<void> _showPriceAlertDialog(BuildContext context, WidgetRef ref, String commodity) async {
+Future<void> showPriceAlertDialog(BuildContext context, WidgetRef ref, String commodity) async {
   final t = AppLocalizations.of(context)!;
   final existing = ref.read(mandiWatchlistProvider).alertFor(commodity);
   final controller = TextEditingController(text: existing?.toStringAsFixed(0) ?? '');
@@ -187,15 +195,26 @@ class _InfoBanner extends StatelessWidget {
 }
 
 class _LiveMandiPricesSection extends StatelessWidget {
-  const _LiveMandiPricesSection({required this.prices});
+  const _LiveMandiPricesSection({required this.prices, required this.result});
 
   final List<LiveMandiPrice> prices;
+  final AsyncValue<MandiResult<List<LiveMandiPrice>>> result;
 
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
+
+    if (result.isLoading && prices.isEmpty) {
+      return const SizedBox(height: 120, child: Center(child: CircularProgressIndicator()));
+    }
+    if (prices.isEmpty) {
+      final error = result.error;
+      return _InfoBanner(text: error != null ? mandiErrorText(t, error) : t.mandiNoPrices);
+    }
+
     final top = prices.first;
     final rest = prices.skip(1).take(4).toList();
+    final fromCache = result.valueOrNull?.fromCache ?? false;
 
     return Container(
       width: double.infinity,
@@ -215,10 +234,13 @@ class _LiveMandiPricesSection extends StatelessWidget {
             children: [
               const Icon(Icons.podcasts_rounded, color: Colors.white, size: 18),
               const SizedBox(width: 8),
-              Text(
-                t.liveMandiPricesTitle,
-                style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+              Expanded(
+                child: Text(
+                  t.mandiLiveTitle,
+                  style: const TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
+                ),
               ),
+              if (fromCache) const Icon(Icons.cloud_off_outlined, color: Colors.white70, size: 18),
             ],
           ),
           const SizedBox(height: 14),
@@ -230,6 +252,10 @@ class _LiveMandiPricesSection extends StatelessWidget {
           Text(
             '${top.market} • ${t.perQuintalLabel}',
             style: const TextStyle(color: Colors.white70, fontSize: 12),
+          ),
+          Text(
+            t.mandiReportedOn(DateFormat('d MMM yyyy').format(top.arrivalDate)),
+            style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
           ),
           if (rest.isNotEmpty) ...[
             const SizedBox(height: 14),
@@ -269,7 +295,18 @@ class _LiveMandiPricesSection extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 10),
-          Text(t.liveMandiSourceLabel, style: const TextStyle(color: Colors.white70, fontSize: 11)),
+          Row(
+            children: [
+              Expanded(
+                child: Text(t.liveMandiSourceLabel, style: const TextStyle(color: Colors.white70, fontSize: 11)),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+                onPressed: () => context.push('/mandi/live'),
+                child: Text(t.mandiSeeAll),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -349,7 +386,7 @@ class _MandiTrendCard extends ConsumerWidget {
           IconButton(
             visualDensity: VisualDensity.compact,
             tooltip: t.setPriceAlert,
-            onPressed: () => _showPriceAlertDialog(context, ref, commodity),
+            onPressed: () => showPriceAlertDialog(context, ref, commodity),
             icon: Icon(
               alert != null ? Icons.notifications_active_rounded : Icons.notifications_none_rounded,
               color: alert != null ? AppColors.primary : AppColors.textSecondary,

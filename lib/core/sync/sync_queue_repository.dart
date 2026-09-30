@@ -10,18 +10,10 @@ class SyncQueueRepository {
 
   final AppDatabase _db;
 
-  Future<void> enqueue({
-    required String table,
-    required String entityId,
-    required String operation,
-  }) async {
-    await _db.into(_db.syncQueueItems).insert(
-          SyncQueueItemsCompanion.insert(
-            entityTable: table,
-            entityId: entityId,
-            operation: operation,
-          ),
-        );
+  Future<void> enqueue({required String table, required String entityId, required String operation}) async {
+    await _db
+        .into(_db.syncQueueItems)
+        .insert(SyncQueueItemsCompanion.insert(entityTable: table, entityId: entityId, operation: operation));
   }
 
   Future<List<SyncQueueItem>> nextBatch({int limit = 20}) {

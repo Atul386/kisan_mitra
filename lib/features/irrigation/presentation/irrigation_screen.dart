@@ -30,7 +30,7 @@ class IrrigationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = AppLocalizations.of(context)!;
-    final logs = ref.watch(seasonIrrigationLogsProvider).value ?? const [];
+    final logs = ref.watch(seasonIrrigationLogsProvider).valueOrNull ?? const [];
     final daysSinceLast = ref.watch(daysSinceLastIrrigationProvider);
     final suggestedNext = ref.watch(suggestedNextIrrigationProvider);
 

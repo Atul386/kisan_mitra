@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/analytics/analytics_providers.dart';
 import '../../../core/utils/error_messages.dart';
@@ -24,6 +25,8 @@ class AddCropScreen extends ConsumerStatefulWidget {
 class _AddCropScreenState extends ConsumerState<AddCropScreen> {
   final _varietyController = TextEditingController();
   final _areaController = TextEditingController();
+  final _notesController = TextEditingController();
+  DateTime? _expectedHarvest;
   MasterCrop? _selectedCrop;
   DateTime _sowingDate = DateTime.now();
   String? _season;
@@ -49,6 +52,7 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
   void dispose() {
     _varietyController.dispose();
     _areaController.dispose();
+    _notesController.dispose();
     super.dispose();
   }
 
@@ -60,6 +64,16 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
       lastDate: DateTime.now(),
     );
     if (picked != null) setState(() => _sowingDate = picked);
+  }
+
+  Future<void> _pickHarvestDate() async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _expectedHarvest ?? _sowingDate.add(const Duration(days: 120)),
+      firstDate: _sowingDate,
+      lastDate: DateTime.now().add(const Duration(days: 730)),
+    );
+    if (picked != null) setState(() => _expectedHarvest = picked);
   }
 
   Future<void> _save() async {
@@ -78,10 +92,14 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
               area: double.tryParse(_areaController.text.trim()),
               areaUnit: _effectiveAreaUnit.name,
               seasonName: _season ?? _seasonForMonth(_sowingDate.month),
+              expectedHarvestDate: _expectedHarvest,
+              notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
             ),
           );
       ref.read(analyticsServiceProvider).logEvent('crop_added', parameters: {'cropId': crop.id});
-      // Router redirect moves to Dashboard once an active season exists.
+      // During onboarding the router redirect moves the farmer on; when
+      // opened from the Farm tab, close so repeat taps can't add duplicates.
+      if (mounted && context.canPop()) context.pop();
     } catch (e, st) {
       reportError(e, st, context: 'AddCropScreen.save');
       if (mounted) showGenericErrorSnackBar(context);
@@ -167,6 +185,27 @@ class _AddCropScreenState extends ConsumerState<AddCropScreen> {
                   .map((s) => DropdownMenuItem(value: s, child: Text(_seasonLabel(t, s))))
                   .toList(),
               onChanged: (s) => setState(() => _season = s),
+            ),
+            const SizedBox(height: 16),
+            InkWell(
+              borderRadius: BorderRadius.circular(12),
+              onTap: _pickHarvestDate,
+              child: InputDecorator(
+                decoration: InputDecoration(
+                  labelText: t.expectedHarvestLabel,
+                  suffixIcon: const Icon(Icons.calendar_today_outlined, size: 20),
+                ),
+                child: Text(
+                  _expectedHarvest == null ? '—' : '${_expectedHarvest!.day}/${_expectedHarvest!.month}/${_expectedHarvest!.year}',
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: _notesController,
+              maxLines: 3,
+              textCapitalization: TextCapitalization.sentences,
+              decoration: InputDecoration(labelText: t.notesLabel, alignLabelWithHint: true),
             ),
             const SizedBox(height: 32),
             ElevatedButton(

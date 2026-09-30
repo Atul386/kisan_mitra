@@ -17,3 +17,12 @@ final activeSeasonProvider = StreamProvider.family<Season?, String>((ref, farmId
 });
 
 final masterCropsProvider = Provider<List<MasterCrop>>((ref) => kLocalMasterCrops);
+
+/// Every crop on a farm (active, harvested and completed), newest first.
+final farmSeasonsProvider = StreamProvider.family<List<Season>, String>((ref, farmId) {
+  return ref.watch(seasonRepositoryProvider).watchSeasons(farmId);
+});
+
+final seasonProvider = StreamProvider.family<Season?, String>((ref, seasonId) {
+  return ref.watch(seasonRepositoryProvider).watchSeason(seasonId);
+});

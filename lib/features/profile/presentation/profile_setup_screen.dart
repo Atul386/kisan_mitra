@@ -19,6 +19,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
   final _nameController = TextEditingController();
   final _stateController = TextEditingController();
   final _districtController = TextEditingController();
+  final _talukaController = TextEditingController();
   final _villageController = TextEditingController();
   Locale? _language;
   bool _saving = false;
@@ -28,14 +29,15 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
     _nameController.dispose();
     _stateController.dispose();
     _districtController.dispose();
+    _talukaController.dispose();
     _villageController.dispose();
     super.dispose();
   }
 
   Future<void> _save() async {
-    final user = ref.read(currentUserProvider).value;
+    final user = ref.read(currentUserProvider).valueOrNull;
     if (user == null) return;
-    final language = _language ?? ref.read(localeControllerProvider).value ?? kSupportedLocales.first;
+    final language = _language ?? ref.read(localeControllerProvider).valueOrNull ?? kSupportedLocales.first;
     setState(() => _saving = true);
     try {
       await ref.read(localeControllerProvider.notifier).setLocale(language);
@@ -44,6 +46,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
               name: _nameController.text.trim(),
               state: _stateController.text.trim(),
               district: _districtController.text.trim(),
+              taluka: _talukaController.text.trim(),
               village: _villageController.text.trim(),
               language: language.languageCode,
             ),
@@ -82,12 +85,17 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
             ),
             const SizedBox(height: 16),
             TextField(
+              controller: _talukaController,
+              decoration: InputDecoration(labelText: t.talukaLabel),
+            ),
+            const SizedBox(height: 16),
+            TextField(
               controller: _villageController,
               decoration: InputDecoration(labelText: t.villageLabel),
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<Locale>(
-              initialValue: _language ?? ref.watch(localeControllerProvider).value,
+              initialValue: _language ?? ref.watch(localeControllerProvider).valueOrNull,
               decoration: InputDecoration(labelText: t.preferredLanguageLabel),
               items: [
                 DropdownMenuItem(value: const Locale('mr'), child: Text(t.languageMarathi)),

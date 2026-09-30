@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/config/feature_flags.dart';
 import '../../core/utils/shared_preferences_provider.dart';
+import '../../core/utils/today_provider.dart';
 import '../dashboard/dashboard_providers.dart';
 import 'data/open_meteo_weather_repository.dart';
 import 'data/weather_cache.dart';
@@ -21,6 +23,8 @@ const weatherRulesEngine = WeatherRulesEngine();
 /// useful offline (§7, §17, §34). Returns null only when the farm has no
 /// location yet.
 final currentWeatherProvider = FutureProvider<WeatherSnapshot?>((ref) async {
+  ref.watch(todayProvider);
+  if (kUseDummyWeather) return WeatherSnapshot.demo();
   final farm = ref.watch(primaryFarmProvider);
   if (farm == null || !farm.hasLocation) return null;
 
@@ -37,7 +41,7 @@ final currentWeatherProvider = FutureProvider<WeatherSnapshot?>((ref) async {
 });
 
 final weatherAdviceProvider = Provider<List<WeatherAdvice>>((ref) {
-  final snapshot = ref.watch(currentWeatherProvider).value;
+  final snapshot = ref.watch(currentWeatherProvider).valueOrNull;
   if (snapshot == null) return const [];
   return weatherRulesEngine.adviceFor(snapshot);
 });

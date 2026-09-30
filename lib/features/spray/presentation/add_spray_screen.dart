@@ -52,7 +52,7 @@ class _AddSprayScreenState extends ConsumerState<AddSprayScreen> {
     if (farm == null || _productController.text.trim().isEmpty) return;
     setState(() => _saving = true);
     try {
-      final season = ref.read(primaryActiveSeasonProvider).value;
+      final season = ref.read(primaryActiveSeasonProvider).valueOrNull;
       await ref.read(sprayRepositoryProvider).addLog(
             SprayLogEntry(
               id: newId(),

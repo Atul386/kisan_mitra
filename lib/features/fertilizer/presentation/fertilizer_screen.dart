@@ -12,7 +12,7 @@ class FertilizerScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = AppLocalizations.of(context)!;
-    final logs = ref.watch(seasonFertilizerLogsProvider).value ?? const [];
+    final logs = ref.watch(seasonFertilizerLogsProvider).valueOrNull ?? const [];
 
     return Scaffold(
       appBar: AppBar(title: Text(t.fertilizerTitle)),

@@ -2,13 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../config/feature_flags.dart';
+
 /// Supported languages per blueprint §3. Add future languages here only —
 /// no other application logic needs to change.
-const List<Locale> kSupportedLocales = [
-  Locale('en'),
-  Locale('hi'),
-  Locale('mr'),
-];
+const List<Locale> kSupportedLocales = [Locale('en'), Locale('hi'), Locale('mr')];
 
 const _prefsKey = 'app_language';
 
@@ -17,6 +15,7 @@ const _prefsKey = 'app_language';
 class LocaleController extends AsyncNotifier<Locale?> {
   @override
   Future<Locale?> build() async {
+    if (kEnglishOnly) return const Locale('en');
     final prefs = await SharedPreferences.getInstance();
     final code = prefs.getString(_prefsKey);
     if (code == null) return null;
@@ -30,6 +29,4 @@ class LocaleController extends AsyncNotifier<Locale?> {
   }
 }
 
-final localeControllerProvider = AsyncNotifierProvider<LocaleController, Locale?>(
-  LocaleController.new,
-);
+final localeControllerProvider = AsyncNotifierProvider<LocaleController, Locale?>(LocaleController.new);

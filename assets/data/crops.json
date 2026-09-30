@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "crops": [
+    {
+      "id": "onion",
+      "name": "Onion",
+      "icon": "🧅",
+      "overview": "Onion is a cool-season bulb vegetable grown for fresh sale and storage. Maharashtra is one of India's largest onion-producing states, with crops in kharif, late kharif and rabi seasons.",
+      "sowing": "Kharif: May–July (nursery), transplant June–August. Late kharif: August–October. Rabi: October–December (nursery), transplant November–January.",
+      "soil": "Well-drained loamy or sandy loam soil, pH about 6.0–7.5. Avoid waterlogged or heavy clay soil.",
+      "climate": "Needs cool weather while the plant grows leaves and a warmer, drier period for bulb maturity.",
+      "irrigation": "Light, frequent irrigation, especially during bulb formation. Stop irrigation some days before harvest so bulbs cure well.",
+      "nutrients": "Responds to balanced nitrogen, phosphorus, potassium and sulphur. Confirm quantities against your soil test and local agriculture department advice.",
+      "pests": [
+        "Thrips",
+        "Onion maggot"
+      ],
+      "diseases": [
+        "Purple blotch",
+        "Stemphylium blight",
+        "Basal rot",
+        "Downy mildew"
+      ],
+      "harvest": "Ready when about half to three-quarters of the tops fall over and necks soften, usually 100–150 days after transplanting depending on season and variety.",
+      "storage": "Cure bulbs in shade for a few days, keep them dry, and store in well-ventilated structures. Remove damaged or sprouting bulbs."
+    },
+    {
+      "id": "soybean",
+      "name": "Soybean",
+      "icon": "🌱",
+      "overview": "Soybean is a major kharif oilseed and protein crop in Maharashtra, mostly grown rain-fed.",
+      "sowing": "Kharif: mid June to mid July, once the monsoon has given good, steady rain.",
+      "soil": "Well-drained medium to deep black or loamy soil, pH about 6.0–7.5. Poorly drained fields suffer in heavy rain.",
+      "climate": "Warm and moist growing season; needs adequate rain or irrigation at flowering and pod filling.",
+      "irrigation": "Usually rain-fed. If there is a long dry spell, a protective irrigation at flowering or pod filling helps.",
+      "nutrients": "Seed treatment with a suitable Rhizobium culture is commonly advised. Fertilizer should follow a soil test and local recommendations.",
+      "pests": [
+        "Girdle beetle",
+        "Stem fly",
+        "Leaf-eating caterpillars"
+      ],
+      "diseases": [
+        "Yellow mosaic",
+        "Rust",
+        "Charcoal rot"
+      ],
+      "harvest": "Harvest when leaves turn yellow and drop and pods are dry, about 90–110 days depending on variety.",
+      "storage": "Dry grain to a safe moisture level before storing. Store in clean, dry, pest-free bags or bins."
+    },
+    {
+      "id": "wheat",
+      "name": "Wheat",
+      "icon": "🌾",
+      "overview": "Wheat is the main rabi cereal, grown on residual soil moisture or with irrigation.",
+      "sowing": "Rabi: November to mid December for timely sowing; late sowing gives lower yield.",
+      "soil": "Well-drained loam to clay loam, pH about 6.0–7.5.",
+      "climate": "Cool weather during growth and a warm, dry period at grain filling. High temperature at grain filling can reduce yield.",
+      "irrigation": "Critical stages are crown root initiation, tillering, jointing, flowering and grain filling. Number of irrigations depends on soil and variety.",
+      "nutrients": "Needs nitrogen, phosphorus and potassium; split nitrogen application is common. Follow soil test and local recommendations.",
+      "pests": [
+        "Aphids",
+        "Termites",
+        "Pink stem borer"
+      ],
+      "diseases": [
+        "Rusts (yellow, brown, black)",
+        "Loose smut",
+        "Powdery mildew"
+      ],
+      "harvest": "Harvest when grain is hard and straw turns golden-yellow, about 110–130 days after sowing.",
+      "storage": "Store only well-dried grain in clean, moisture-proof containers. Check regularly for weevils."
+    },
+    {
+      "id": "rice",
+      "name": "Rice",
+      "icon": "🍚",
+      "overview": "Rice is a kharif cereal grown under transplanted, direct-seeded or rain-fed conditions.",
+      "sowing": "Kharif: nursery in June, transplanting in July after good rain.",
+      "soil": "Clay or clay loam that holds water; pH about 5.5–7.0.",
+      "climate": "Warm and humid. Needs plentiful water, especially from tillering to flowering.",
+      "irrigation": "Keep the field moist to shallowly flooded during growth; drain before harvest. Water-saving methods such as alternate wetting and drying can reduce use.",
+      "nutrients": "Nitrogen, phosphorus and potassium in split doses are common. Zinc is often deficient. Use soil test results.",
+      "pests": [
+        "Stem borer",
+        "Leaf folder",
+        "Brown planthopper",
+        "Gall midge"
+      ],
+      "diseases": [
+        "Blast",
+        "Bacterial leaf blight",
+        "Sheath blight"
+      ],
+      "harvest": "Harvest when about 80–85% of grains in the panicle are straw-coloured, roughly 110–150 days depending on variety.",
+      "storage": "Dry paddy to a safe moisture level before storage. Keep it off the floor and away from damp walls."
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "icon": "🍅",
+      "overview": "Tomato is a warm-season fruit vegetable grown for fresh market and processing.",
+      "sowing": "Kharif: June–July. Rabi: September–November. Summer: January–February.",
+      "soil": "Well-drained loam or sandy loam rich in organic matter, pH about 6.0–7.0.",
+      "climate": "Grows best at moderate temperatures; very hot or very cold weather reduces fruit set.",
+      "irrigation": "Regular, even moisture. Irregular watering can cause fruit cracking and blossom-end problems.",
+      "nutrients": "Needs balanced nutrients and calcium; staking and organic matter help. Follow soil test advice.",
+      "pests": [
+        "Fruit borer",
+        "Whitefly",
+        "Leaf miner"
+      ],
+      "diseases": [
+        "Early blight",
+        "Late blight",
+        "Leaf curl virus",
+        "Bacterial wilt"
+      ],
+      "harvest": "First picking about 60–90 days after transplanting; pick at the maturity stage suited to the distance to market.",
+      "storage": "Handle gently. Keep in a cool, ventilated place; fully ripe tomatoes keep only a few days."
+    },
+    {
+      "id": "cotton",
+      "name": "Cotton",
+      "icon": "☁️",
+      "overview": "Cotton is a long-duration kharif fibre crop, widely grown in Maharashtra, largely rain-fed.",
+      "sowing": "Kharif: June–July with the onset of the monsoon; irrigated crops may be sown earlier.",
+      "soil": "Deep, well-drained black cotton soil (regur) or medium loam, pH about 6.0–8.0.",
+      "climate": "Warm climate with enough moisture at flowering and boll formation; dry weather at picking.",
+      "irrigation": "Mostly rain-fed; irrigation at flowering and boll development protects yield during dry spells.",
+      "nutrients": "Needs nitrogen, phosphorus and potassium; avoid over-use of nitrogen which promotes pests. Follow soil test advice.",
+      "pests": [
+        "Pink bollworm",
+        "Aphids",
+        "Jassids",
+        "Whitefly"
+      ],
+      "diseases": [
+        "Wilt",
+        "Leaf spots",
+        "Leaf curl virus"
+      ],
+      "harvest": "Pick open bolls in several rounds, usually starting 150–180 days after sowing.",
+      "storage": "Keep picked cotton dry and clean, free of leaf and soil, and store off the ground."
+    },
+    {
+      "id": "sugarcane",
+      "name": "Sugarcane",
+      "icon": "🎋",
+      "overview": "Sugarcane is a long-duration cash crop. Most Maharashtra crop is supplied to sugar factories.",
+      "sowing": "Adsali: July–August (about 16–18 months). Pre-seasonal: October–November. Suru: January–February.",
+      "soil": "Deep, well-drained loam or clay loam, pH about 6.5–7.5.",
+      "climate": "Warm, sunny climate with plenty of water; cool dry weather near harvest improves sugar content.",
+      "irrigation": "Needs regular irrigation. Drip irrigation can save water and improve efficiency.",
+      "nutrients": "High nutrient demand. Organic matter and soil-test-based fertilizer are advised.",
+      "pests": [
+        "Early shoot borer",
+        "Woolly aphid",
+        "White grub"
+      ],
+      "diseases": [
+        "Red rot",
+        "Smut",
+        "Wilt"
+      ],
+      "harvest": "Harvest when the crop is mature, as advised by the sugar factory, usually 10–18 months after planting depending on the planting season.",
+      "storage": "Deliver cane to the factory quickly after cutting; sugar content falls with delay."
+    },
+    {
+      "id": "chilli",
+      "name": "Chilli",
+      "icon": "🌶️",
+      "overview": "Chilli is a spice and vegetable crop grown for green and dry sale.",
+      "sowing": "Kharif: nursery May–June, transplant June–July. Rabi: nursery September–October.",
+      "soil": "Well-drained loam or black soil rich in organic matter, pH about 6.0–7.5.",
+      "climate": "Warm, humid climate; very high temperature or heavy rain at flowering can cause flower drop.",
+      "irrigation": "Light, frequent irrigation. Avoid water stress at flowering and fruit set, and avoid waterlogging.",
+      "nutrients": "Needs balanced nutrients with attention to potassium and calcium. Follow soil test advice.",
+      "pests": [
+        "Thrips",
+        "Mites",
+        "Fruit borer",
+        "Aphids"
+      ],
+      "diseases": [
+        "Anthracnose / fruit rot",
+        "Leaf curl",
+        "Powdery mildew",
+        "Damping-off in nursery"
+      ],
+      "harvest": "Green chilli can be picked from about 60–75 days after transplanting; for dry chilli, pick fully red, ripe fruit.",
+      "storage": "Dry red chilli thoroughly in clean, shaded or protected conditions and store in dry, ventilated bags."
+    },
+    {
+      "id": "potato",
+      "name": "Potato",
+      "icon": "🥔",
+      "overview": "Potato is a cool-season tuber crop, grown in Maharashtra mainly in rabi and in some cooler hill areas.",
+      "sowing": "Rabi: October–November in most areas.",
+      "soil": "Loose, well-drained sandy loam or loam, pH about 5.5–6.5.",
+      "climate": "Cool weather (moderate night temperature) for tuber formation; hot conditions reduce tuber growth.",
+      "irrigation": "Light, regular irrigation, especially during tuber initiation and bulking. Avoid waterlogging.",
+      "nutrients": "Needs nitrogen, phosphorus and considerable potassium. Follow soil test advice.",
+      "pests": [
+        "Aphids",
+        "Cutworm",
+        "Tuber moth"
+      ],
+      "diseases": [
+        "Early blight",
+        "Late blight",
+        "Common scab"
+      ],
+      "harvest": "Harvest when vines dry and skins are firm, about 75–110 days depending on variety.",
+      "storage": "Cure in shade, sort out damaged tubers, and store cool, dark and ventilated; cold storage is used for long storage."
+    },
+    {
+      "id": "maize",
+      "name": "Maize",
+      "icon": "🌽",
+      "overview": "Maize is grown as grain, fodder and sweet corn in kharif and rabi.",
+      "sowing": "Kharif: June–July with the monsoon. Rabi: October–November.",
+      "soil": "Well-drained fertile loam, pH about 6.0–7.5. Sensitive to waterlogging.",
+      "climate": "Warm season crop; needs adequate moisture at tasselling and silking.",
+      "irrigation": "Critical stages are knee-high, tasselling, silking and grain filling. Avoid stress at these stages.",
+      "nutrients": "Responds strongly to nitrogen in split doses, with phosphorus and potassium as per soil test.",
+      "pests": [
+        "Fall armyworm",
+        "Stem borer"
+      ],
+      "diseases": [
+        "Turcicum leaf blight",
+        "Downy mildew",
+        "Stalk rots"
+      ],
+      "harvest": "Harvest when husks dry and grains are hard, about 90–120 days for grain maize.",
+      "storage": "Dry grain thoroughly to a safe moisture level before storage to prevent mould and toxins."
+    }
+  ]
+}

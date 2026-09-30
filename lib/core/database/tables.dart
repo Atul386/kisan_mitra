@@ -13,13 +13,7 @@ class SyncStatusConverter extends TypeConverter<SyncStatus, String> {
   String toSql(SyncStatus value) => value.name;
 }
 
-enum SyncStatus {
-  synced,
-  pendingCreate,
-  pendingUpdate,
-  pendingDelete,
-  failed,
-}
+enum SyncStatus { synced, pendingCreate, pendingUpdate, pendingDelete, failed }
 
 /// Mixin-like column set every syncable local table shares (§8).
 mixin SyncableColumns on Table {
@@ -27,8 +21,7 @@ mixin SyncableColumns on Table {
   DateTimeColumn get createdAt => dateTime()();
   DateTimeColumn get updatedAt => dateTime()();
   DateTimeColumn get deletedAt => dateTime().nullable()();
-  TextColumn get syncStatus =>
-      text().map(const SyncStatusConverter()).withDefault(const Constant('pendingCreate'))();
+  TextColumn get syncStatus => text().map(const SyncStatusConverter()).withDefault(const Constant('pendingCreate'))();
 
   @override
   Set<Column> get primaryKey => {id};
@@ -41,6 +34,7 @@ class LocalUsers extends Table with SyncableColumns {
   TextColumn get language => text().withDefault(const Constant('en'))();
   TextColumn get state => text().nullable()();
   TextColumn get district => text().nullable()();
+  TextColumn get taluka => text().nullable()();
   TextColumn get village => text().nullable()();
   BoolColumn get isGuest => boolean().withDefault(const Constant(true))();
 }
@@ -54,9 +48,11 @@ class Farms extends Table with SyncableColumns {
   TextColumn get country => text().nullable()();
   TextColumn get state => text().nullable()();
   TextColumn get district => text().nullable()();
+  TextColumn get taluka => text().nullable()();
   TextColumn get village => text().nullable()();
   TextColumn get soilType => text().nullable()();
   TextColumn get irrigationType => text().nullable()();
+  TextColumn get waterSource => text().nullable()();
   RealColumn get latitude => real().nullable()();
   RealColumn get longitude => real().nullable()();
 }
@@ -71,7 +67,9 @@ class Seasons extends Table with SyncableColumns {
   RealColumn get area => real().nullable()();
   TextColumn get areaUnit => text().nullable()();
   TextColumn get seasonName => text().nullable()(); // kharif, rabi, zaid
-  TextColumn get status => text().withDefault(const Constant('active'))();
+  TextColumn get status => text().withDefault(const Constant('active'))(); // active, harvested, completed
+  DateTimeColumn get expectedHarvestDate => dateTime().nullable()();
+  TextColumn get notes => text().nullable()();
 }
 
 /// Farmer task instances generated from crop task templates (§16, §46).
@@ -79,8 +77,7 @@ class FarmTasks extends Table with SyncableColumns {
   TextColumn get seasonId => text()();
   TextColumn get title => text()();
   DateTimeColumn get dueDate => dateTime()();
-  TextColumn get state =>
-      text().withDefault(const Constant('pending'))(); // pending, done, skipped, snoozed
+  TextColumn get state => text().withDefault(const Constant('pending'))(); // pending, done, skipped, snoozed
 }
 
 /// Expense log (§21).
@@ -148,6 +145,58 @@ class LocalReminders extends Table with SyncableColumns {
   TextColumn get relatedType => text().nullable()(); // task, irrigation, fertilizer, expense
   TextColumn get relatedId => text().nullable()();
   BoolColumn get fired => boolean().withDefault(const Constant(false))();
+
+  /// [ReminderCategory] name.
+  TextColumn get category => text().withDefault(const Constant('custom'))();
+
+  /// [ReminderRepeat] name: none, daily, weekly, monthly.
+  TextColumn get repeatRule => text().withDefault(const Constant('none'))();
+  BoolColumn get completed => boolean().withDefault(const Constant(false))();
+
+  /// Crop (season id) this reminder is about, if any.
+  TextColumn get cropId => text().nullable()();
+
+  /// When false the reminder is only listed, never sent as a notification.
+  BoolColumn get notificationEnabled => boolean().withDefault(const Constant(true))();
+}
+
+/// Crop diary entries — one row per activity on a crop (sowing, irrigation,
+/// spray, pest sighting, sale, ...), shown as a timeline.
+class CropActivities extends Table with SyncableColumns {
+  TextColumn get farmId => text()();
+  TextColumn get seasonId => text()();
+  TextColumn get type => text()(); // ActivityType name
+  DateTimeColumn get date => dateTime()();
+  TextColumn get notes => text().nullable()();
+  TextColumn get photoPath => text().nullable()();
+
+  /// What this activity cost (₹), if the farmer wants to note it.
+  RealColumn get cost => real().nullable()();
+}
+
+/// Soil test values the farmer typed in from a lab report or Soil Health Card.
+class SoilReports extends Table with SyncableColumns {
+  TextColumn get farmId => text()();
+  DateTimeColumn get date => dateTime()();
+  RealColumn get ph => real().nullable()();
+  RealColumn get nitrogen => real().nullable()();
+  RealColumn get phosphorus => real().nullable()();
+  RealColumn get potassium => real().nullable()();
+  RealColumn get organicCarbon => real().nullable()();
+  TextColumn get otherNutrients => text().nullable()();
+  TextColumn get documentId => text().nullable()(); // optional scanned card
+}
+
+/// Document locker: files kept on the phone, optionally backed up to
+/// Firebase Storage (cloudPath is set once uploaded).
+class FarmDocuments extends Table with SyncableColumns {
+  TextColumn get farmId => text().nullable()();
+  TextColumn get category => text()(); // DocumentCategory name
+  TextColumn get title => text()();
+  TextColumn get localPath => text()();
+  TextColumn get mimeType => text()();
+  IntColumn get sizeBytes => integer().withDefault(const Constant(0))();
+  TextColumn get cloudPath => text().nullable()();
 }
 
 /// Farmer-entered mandi price observations (§23). No live feed exists

@@ -1,11 +1,12 @@
 flutter_native_splash:
-  color: "#1B5E20"
-  image: assets/images/splash_icon.png
+  # Full-screen picture only (it already contains the logo and tagline).
+  background_image: assets/images/splash_screen_bg.png
 
+  # Android 12+ system splashes can't show a full-screen picture — only an
+  # icon on a colour — so they show the app icon on its own background,
+  # then the in-app splash (same picture) follows.
   android_12:
-    color: "#1B5E20"
-    image: assets/images/splash_icon.png
-    icon_background_color: "#1B5E20"
+    color: "#FAFAF4"
 
   android: true
   ios: true

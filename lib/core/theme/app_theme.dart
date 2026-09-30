@@ -35,11 +35,7 @@ class AppTheme {
         backgroundColor: AppColors.background,
         surfaceTintColor: Colors.transparent,
         foregroundColor: AppColors.primaryDark,
-        titleTextStyle: TextStyle(
-          color: AppColors.primaryDark,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
+        titleTextStyle: TextStyle(color: AppColors.primaryDark, fontSize: 20, fontWeight: FontWeight.w700),
         iconTheme: IconThemeData(color: AppColors.primaryDark),
         elevation: 0,
         centerTitle: false,
@@ -91,10 +87,7 @@ class AppTheme {
         bodyMedium: AppTextStyles.body,
         bodySmall: AppTextStyles.supporting,
         labelLarge: AppTextStyles.button,
-      ).apply(
-        bodyColor: AppColors.textPrimary,
-        displayColor: AppColors.textPrimary,
-      ),
+      ).apply(bodyColor: AppColors.textPrimary, displayColor: AppColors.textPrimary),
       dividerTheme: const DividerThemeData(color: AppColors.border, thickness: 1),
     );
   }
@@ -118,11 +111,7 @@ class AppTheme {
         backgroundColor: AppColors.darkBackground,
         surfaceTintColor: Colors.transparent,
         foregroundColor: AppColors.darkTextPrimary,
-        titleTextStyle: TextStyle(
-          color: AppColors.darkTextPrimary,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-        ),
+        titleTextStyle: TextStyle(color: AppColors.darkTextPrimary, fontSize: 20, fontWeight: FontWeight.w700),
         elevation: 0,
         centerTitle: false,
       ),
@@ -150,10 +139,7 @@ class AppTheme {
         bodyMedium: AppTextStyles.body,
         bodySmall: AppTextStyles.supporting,
         labelLarge: AppTextStyles.button,
-      ).apply(
-        bodyColor: AppColors.darkTextPrimary,
-        displayColor: AppColors.darkTextPrimary,
-      ),
+      ).apply(bodyColor: AppColors.darkTextPrimary, displayColor: AppColors.darkTextPrimary),
       dividerTheme: const DividerThemeData(color: AppColors.darkBorder, thickness: 1),
     );
   }

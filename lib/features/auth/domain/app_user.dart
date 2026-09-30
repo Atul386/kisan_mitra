@@ -7,6 +7,7 @@ class AppUser {
     this.language,
     this.state,
     this.district,
+    this.taluka,
     this.village,
   });
 
@@ -17,6 +18,7 @@ class AppUser {
   final String? language;
   final String? state;
   final String? district;
+  final String? taluka;
   final String? village;
 
   AppUser copyWith({
@@ -25,6 +27,7 @@ class AppUser {
     String? language,
     String? state,
     String? district,
+    String? taluka,
     String? village,
   }) {
     return AppUser(
@@ -35,6 +38,7 @@ class AppUser {
       language: language ?? this.language,
       state: state ?? this.state,
       district: district ?? this.district,
+      taluka: taluka ?? this.taluka,
       village: village ?? this.village,
     );
   }

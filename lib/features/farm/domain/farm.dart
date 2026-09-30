@@ -13,9 +13,11 @@ class Farm {
     this.country,
     this.state,
     this.district,
+    this.taluka,
     this.village,
     this.soilType,
     this.irrigationType,
+    this.waterSource,
     this.latitude,
     this.longitude,
   });
@@ -28,9 +30,11 @@ class Farm {
   final String? country;
   final String? state;
   final String? district;
+  final String? taluka;
   final String? village;
   final String? soilType;
   final String? irrigationType;
+  final String? waterSource;
   final double? latitude;
   final double? longitude;
 

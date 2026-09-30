@@ -70,7 +70,7 @@ class _ExpensesScreenState extends ConsumerState<ExpensesScreen> {
   @override
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
-    final allExpenses = ref.watch(seasonExpensesProvider).value ?? const [];
+    final allExpenses = ref.watch(seasonExpensesProvider).valueOrNull ?? const [];
     final now = DateTime.now();
     final expenses = _range == _TimeRange.season
         ? allExpenses

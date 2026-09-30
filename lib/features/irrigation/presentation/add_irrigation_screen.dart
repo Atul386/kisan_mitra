@@ -47,7 +47,7 @@ class _AddIrrigationScreenState extends ConsumerState<AddIrrigationScreen> {
     if (farm == null) return;
     setState(() => _saving = true);
     try {
-      final season = ref.read(primaryActiveSeasonProvider).value;
+      final season = ref.read(primaryActiveSeasonProvider).valueOrNull;
       await ref.read(irrigationRepositoryProvider).addLog(
             IrrigationLogEntry(
               id: newId(),
